@@ -10,7 +10,10 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule),
   },
-
+  {
+    path: 'encuesta',
+    loadChildren: () => import('./modules/encuesta/encuesta.module').then(m => m.EncuestaModule),
+  },
   {
     path: '**',
     redirectTo: 'login'
