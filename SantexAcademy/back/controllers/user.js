@@ -3,7 +3,7 @@ const { userService } = require("../services")
 const createUser = async (req, res) => {
     try{
         const newUser = await userService.createUser(req.body);
-        res.json(newUser);
+        res.status(201).json(newUser);
     }catch(err){
         res.status(500).json({action: 'createUser', error: err.message});
     }
@@ -11,22 +11,62 @@ const createUser = async (req, res) => {
 
 const getUser = async (req,res,) =>{
     try{
-        const user = await userService.getUser(req.params.userId);
-        if(!user) {
+        const userFound = await userService.getUser(req.params.userId);
+        if(!userFound) {
             res.status(404).json({action: 'getUser', error: 'User Not Found'});
         }else{
-            res.json(user);
+            res.json(userFound);
         }
     }catch(err){
         res.status(500).json({action: 'getUser', error: err.message});
     }
 };
 
-const putUser = (req,res,) =>{
-    /* console.log(`User found with id ${req.params.bookId}.`); */
-    res.json({id: req.params.bookId, ...req.body});
+const putUser = async (req,res,) =>{
+    const userId = req.params.userId;
+    const user = req.body;
+    
+    try{
+        if(!userId ) {
+            res.status(404).json({action: 'putUser', error: 'User Not Found'});
+        }else{
+            const updatedUser = await userService.putUser(userId, user); 
+            res.json(updatedUser);
+        }
+    }catch(err){
+        res.status(500).json({action: 'putUser', error: err.message});
+    }
+    
 };
 
+const setRoleUser = async (req,res,) =>{
+    const userId = req.params.userId;
+    const user = req.body;
+    
+    try{
+        if(!userId ) {
+            res.status(404).json({action: 'setRoleUser', error: 'User Not Found'});
+        }else{
+            const settedUser = await userService.setRoleUser(userId, user); 
+            res.json(settedUser);
+        }
+    }catch(err){
+        res.status(500).json({action: 'setRoleUser', error: err.message});
+    }
+    
+};
 
+const deleteUser = async (req,res,) =>{
+    try{
+        const user = await userService.deleteUser(req.params.userId);
+        if(!user) {
+            res.status(404).json({action: 'deleteUser', error: 'User Not Found'});
+        }else{
+            res.json(user);
+        }
+    }catch(err){
+        res.status(500).json({action: 'deleteUser', error: err.message});
+    }
+};
 
-module.exports = {createUser, getUser, putUser, };
+module.exports = {createUser, getUser, putUser, setRoleUser, deleteUser };
