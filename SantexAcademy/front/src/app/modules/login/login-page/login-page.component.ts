@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/authService';
+import { TokenService } from 'src/app/core/services/token.service';
 import { LoginUser } from 'src/app/models/login-user';
-/* import { AuthService } from 'src/app/core/services/authService'; */
+
 
 @Component({
   selector: 'app-login-page',
@@ -18,21 +20,26 @@ export class LoginPageComponent implements OnInit {
   roles: string[] = [];
   errMsj!: string;
 
-  constructor(/* private authService: AuthService ,*/ private router:Router){};
+  constructor(private tokenService: TokenService, private authService: AuthService , private router:Router){};
 
   ngOnInit(): void {
+      if(this.tokenService.getToken()){
+      this.isLogged = true;
+      this.isLogginFail = false;
+      this.roles = this.tokenService.getAuthorities();
+    }
 
   }
 
-/*     onLogin(): void {
+     onLogin(): void {
       this.loginUser = new LoginUser(this.userName, this.password); 
       this.authService.login(this.loginUser).subscribe(data => {
                  this.isLogged = true; 
                  this.isLogginFail = false; 
-                 //this.tokenService.setToken(data.token); 
-                 //this.tokenService.setUserName(data.nombreUsuario);
-                 //this.tokenService.setAuthorities(data.authorities);
-                 //this.roles = data.authorities;
+                 this.tokenService.setToken(data.token); 
+                 this.tokenService.setUserName(data.nombreUsuario);
+                 this.tokenService.setAuthorities(data.authorities);
+                 this.roles = data.authorities;
                  this.router.navigate(['encuesta'])
                 }, err =>{
                   this.isLogged = false;
@@ -40,7 +47,7 @@ export class LoginPageComponent implements OnInit {
                   this.errMsj = err.error.mensaje;
                   console.log(this.errMsj);
                 });
-   */
+   
   }
 
-/* } */
+}
