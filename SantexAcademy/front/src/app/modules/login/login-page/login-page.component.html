@@ -2,7 +2,7 @@
   <div class="container">
     <h1>Log In</h1>
 
-    <!-- <form #f="ngForm" (ngSubmit)="onLogin()" novalidate> -->
+    <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
       <input 
          type="user" 
          name="user" 
@@ -17,13 +17,14 @@
          class="form-control form-control-lg"
          [(ngModel)]="password" 
          required>
-      <a href="#">Log in</a>
+      <button type="submit">Log in</button>
+    </form>
+
       <div id="remember-container">
         <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked" />
         <span id="remember">Remember me</span>
         <span id="forgotten">Forgotten password</span>
       </div>
-    <!-- </form> -->
   </div>
 
   <!-- Forgotten Password Container -->
