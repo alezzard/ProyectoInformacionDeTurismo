@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginUser } from 'src/app/models/login-user';
-import { AuthService } from 'src/app/core/services/authService';
+/* import { AuthService } from 'src/app/core/services/authService'; */
 
 @Component({
   selector: 'app-login-page',
@@ -18,13 +18,13 @@ export class LoginPageComponent implements OnInit {
   roles: string[] = [];
   errMsj!: string;
 
-  constructor(private authService: AuthService, private router:Router){};
+  constructor(/* private authService: AuthService ,*/ private router:Router){};
 
   ngOnInit(): void {
 
   }
 
-    onLogin(): void {
+/*     onLogin(): void {
       this.loginUser = new LoginUser(this.userName, this.password); 
       this.authService.login(this.loginUser).subscribe(data => {
                  this.isLogged = true; 
@@ -40,7 +40,7 @@ export class LoginPageComponent implements OnInit {
                   this.errMsj = err.error.mensaje;
                   console.log(this.errMsj);
                 });
-  
+   */
   }
 
-}
+/* } */
