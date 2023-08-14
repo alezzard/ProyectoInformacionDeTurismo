@@ -1,5 +1,6 @@
-const { Op } = require("sequelize");
+const { Op, where } = require("sequelize");
 const { User } = require("../models");
+const { Role } = require("../models");
 
 const createUser = async (user) => {
     try {
@@ -13,8 +14,8 @@ const createUser = async (user) => {
 
 const getUser = async (userId) => {
     try {
-        const user = await User.findByPk(userId, { include: { all: true } });
-        return user;
+        const userFound = await User.findByPk(userId, { include: { all: true } });
+        return userFound;
     } catch (err) {
         console.log(`Error when fetching User ${userId}.\n ${err}`);
         /* console.log("Error when creating User.\n",err); */
@@ -24,21 +25,78 @@ const getUser = async (userId) => {
 
 const getUserByCriteria = async (options) => {
     try {
-        const user = await User.findAll({
+        const userFound = await User.findAll({
             where: {
                 [Op.or]: [
-                    { forstName: options.firstName },
+                    { firstName: options.firstName },
                     { lastName: options.lastName }
                 ]
             }
         });
-        return user;
+        return userFound;
     } catch (err) {
         console.log(`Error when fetching User ${userId}.\n ${err}`);
         /* console.log("Error when creating User.\n",err); */
         throw err;
     }
 };
+
+
+const putUser = async (userId, user) => {
+    try {
+        await getUser(userId);
+         const updatedUser = await User.update(
+            { ...user }, 
+            { where:{userId} },); 
+        return updatedUser;
+
+        
+    } catch (err) {
+        console.log(`Error when updating User ${userId}.\n ${err}`);
+        throw err;
+    }
+};
+
+const setRoleUser = async (userId, user) => {
+    try {
+        console.log("provider",userId)
+        await getUser(userId);
+        const role = await Role.findAll({
+            where: {
+                [Op.or]: [
+                    { RoleId: user.RoleId },
+                    { name: user.Role }
+                ]
+            }
+        });
+        if (role){
+            const updatedUser = await User.update(
+            { ...user }, 
+            { where:{userId} },);
+            return updatedUser;
+        }
+        return;        
+
+        
+    } catch (err) {
+        console.log(`Error when updating User ${userId}.\n ${err}`);
+        throw err;
+    }
+};
+
+const deleteUser = async (userId) => {
+    const id = parseInt(userId, 10);
+    try {
+        const deletedUser = await User.destroy(
+            {where: {id}}
+        );
+        return deletedUser;
+    } catch (err) {
+        console.log(`Error when deleting User ${userId}.\n ${err}`);
+        throw err;
+    }
+};
+
 
 const validateUser = async (options) => {
     try {
@@ -60,4 +118,4 @@ const validateUser = async (options) => {
 
 
 
-module.exports = { createUser, getUser, getUserByCriteria, validateUser,  };
+module.exports = { createUser, getUser, getUserByCriteria, putUser, setRoleUser, deleteUser, validateUser,  };

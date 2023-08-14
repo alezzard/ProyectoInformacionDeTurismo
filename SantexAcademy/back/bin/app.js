@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { roleRouter, userRouter, /* authRouter */ } = require('../routes');
+const { roleRouter, userRouter, authRouter } = require('../routes');
 const loggingMiddleware = require("../middleware/logging");
 const { initializeDB } = require("../config/db-config");
 
@@ -21,18 +21,7 @@ app.get("/user", (req, res) => {
 
 app.use("/user", userRouter);
 app.use("/role", roleRouter);
-/* app.use("/login", authRouter); */
-
-/* const errorHandler = (err, req, res, next) => {
-    if (err.message === "File Exists") {
-        res.status(500);
-        res.json({ message : `File ${bookfile} exists.`});
-    } else {
-        res.status(500);
-        res.json({ message : err.message});
-    }
-} */
-
+app.use("/login", authRouter);
 
 
 
