@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
 
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db-config");
-const User   = require("./user");
+
 
 const Role = sequelize.define("Roles",{
     id: {
@@ -35,7 +35,8 @@ const Role = sequelize.define("Roles",{
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     description: {
         type: DataTypes.STRING,
@@ -43,7 +44,5 @@ const Role = sequelize.define("Roles",{
     }
 });
 
-Role.hasMany(User);
-User.belongsTo(Role); 
 
 module.exports = Role;

@@ -6,11 +6,13 @@ const createRole = async (role) => {
         const newRole = await Role.create(role);
         return newRole;
     } catch (err) {
-        console.log(`Error when creating Role ${role}.\n ${err}`);
+        console.log(`Error when creating role ${role}.\n ${err}`);
         throw err;
     }
 };
-/* 
+ 
+
+
 const getRole = async (roleId) => {
     try {
         const role = await Role.findByPk(roleId, { include: { all: true } });
@@ -20,42 +22,32 @@ const getRole = async (roleId) => {
         throw err;
     }
 };
-
-const getRoleByCriteria = async (options) => {
+const putRole = async (roleId, role) => {
     try {
-        const role = await Role.findAll({
-            where: {
-                [Op.or]: [
-                    { forstName: options.firstName },
-                    { lastName: options.lastName }
-                ]
-            }
-        });
-        return role;
+        await getRole(roleId);
+         const updatedRole = await Role.update(
+            { ...role }, 
+            { where:{id:roleId} },); 
+        return updatedRole;
+
+        
     } catch (err) {
-        console.log(`Error when fetching role ${roleId}.\n ${err}`);
+        console.log(`Error when updating role ${roleId}.\n ${err}`);
         throw err;
     }
 };
 
-const validateRole = async (options) => {
+
+const deleteRole = async (roleId) => {
     try {
-        const roleFound = await Role.findAll({
-            where: {
-                email: options.role ,
-                password: options.pass 
-            },
-        });
-        if (roleFound.length !== 0){
-            return roleFound;
-        }
-        return false;
+        const deletedRole = await Role.destroy(
+            {where: {id:roleId}}
+        );
+        return deletedRole;
     } catch (err) {
-        console.log(`Error when validating Role ${roleId}.\n ${err}`);
-        return false;
+        console.log(`Error when deleting role ${roleId}.\n ${err}`);
+        throw err;
     }
 };
- */
 
-
-module.exports = { createRole, /* getRole, getRoleByCriteria, validateRole, */  };
+module.exports = { createRole,  getRole, putRole, deleteRole };

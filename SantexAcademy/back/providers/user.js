@@ -47,7 +47,7 @@ const putUser = async (userId, user) => {
         await getUser(userId);
          const updatedUser = await User.update(
             { ...user }, 
-            { where:{userId} },); 
+            { where:{id:userId} },); 
         return updatedUser;
 
         
@@ -57,38 +57,11 @@ const putUser = async (userId, user) => {
     }
 };
 
-const setRoleUser = async (userId, user) => {
-    try {
-        console.log("provider",userId)
-        await getUser(userId);
-        const role = await Role.findAll({
-            where: {
-                [Op.or]: [
-                    { RoleId: user.RoleId },
-                    { name: user.Role }
-                ]
-            }
-        });
-        if (role){
-            const updatedUser = await User.update(
-            { ...user }, 
-            { where:{userId} },);
-            return updatedUser;
-        }
-        return;        
-
-        
-    } catch (err) {
-        console.log(`Error when updating User ${userId}.\n ${err}`);
-        throw err;
-    }
-};
 
 const deleteUser = async (userId) => {
-    const id = parseInt(userId, 10);
     try {
         const deletedUser = await User.destroy(
-            {where: {id}}
+            {where: {userId}}
         );
         return deletedUser;
     } catch (err) {
@@ -96,6 +69,7 @@ const deleteUser = async (userId) => {
         throw err;
     }
 };
+
 
 
 const validateUser = async (options) => {
@@ -118,4 +92,4 @@ const validateUser = async (options) => {
 
 
 
-module.exports = { createUser, getUser, getUserByCriteria, putUser, setRoleUser, deleteUser, validateUser,  };
+module.exports = { createUser, getUser, getUserByCriteria, putUser, deleteUser, validateUser,  };
