@@ -4,9 +4,9 @@ const { roleController } = require("../controllers")
 
 
 router.post("/", roleController.createRole);
-/*router.get("/:userId", roleController.getRole);
-router.put("/:userId", roleController.putRole); */
-/* router.delete("/:userId", roleController.deleteRole); */
+router.get("/:roleId", roleController.getRole);
+router.put("/:roleId", roleController.putRole); 
+ router.delete("/:roleId", /* userIsAdminMDW, */ roleController.deleteRole); 
 
 
 

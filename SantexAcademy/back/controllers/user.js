@@ -28,7 +28,7 @@ const putUser = async (req,res,) =>{
     
     try{
         if(!userId ) {
-            res.status(404).json({action: 'putUser', error: 'User Not Found'});
+            res.status(404).json({action: 'updateUser', error: 'User Not Found'});
         }else{
             const updatedUser = await userService.putUser(userId, user); 
             res.json(updatedUser);
@@ -39,22 +39,6 @@ const putUser = async (req,res,) =>{
     
 };
 
-const setRoleUser = async (req,res,) =>{
-    const userId = req.params.userId;
-    const user = req.body;
-    
-    try{
-        if(!userId ) {
-            res.status(404).json({action: 'setRoleUser', error: 'User Not Found'});
-        }else{
-            const settedUser = await userService.setRoleUser(userId, user); 
-            res.json(settedUser);
-        }
-    }catch(err){
-        res.status(500).json({action: 'setRoleUser', error: err.message});
-    }
-    
-};
 
 const deleteUser = async (req,res,) =>{
     try{
@@ -69,4 +53,4 @@ const deleteUser = async (req,res,) =>{
     }
 };
 
-module.exports = {createUser, getUser, putUser, setRoleUser, deleteUser };
+module.exports = {createUser, getUser, putUser,  deleteUser };
