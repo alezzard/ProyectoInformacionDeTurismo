@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 
 const TOKEN_KEY = 'AuthToken';
-const USERNAME_KEY = 'AuthUserName';
+const EMAIL_KEY = 'AuthEmail';
 const AUTHORITIES_KEY = 'AuthAuthorities';
 
 @Injectable({
@@ -23,13 +23,13 @@ public getToken(): string {
  return sessionStorage.getItem(TOKEN_KEY)!;
 }
 
-public setUserName(userName: string): void {
- window.sessionStorage.removeItem(USERNAME_KEY);
- window.sessionStorage.setItem(USERNAME_KEY, userName);
+public setEmail(userName: string): void {
+ window.sessionStorage.removeItem(EMAIL_KEY);
+ window.sessionStorage.setItem(EMAIL_KEY, userName);
 }
 
-public getUserName(): string {
- return sessionStorage.getItem(USERNAME_KEY)!;
+public getEmail(): string {
+ return sessionStorage.getItem(EMAIL_KEY)!;
 }
 
 public setAuthorities(authorities: string[]): void {
