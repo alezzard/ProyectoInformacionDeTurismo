@@ -3,19 +3,20 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const { userService } = require("../services");
 
-const { SECRET_SERVER } = require("../middleware/auth");
-const { Model } = require("sequelize");
+const { SERVER_SECRET } = require("../middleware/auth");
 
-router.post("/login", async ( req, res ) => {
-    const { user, pass } = req.body;
-    if ( user === "admin" && pass === "admin"){
-        const token = jwt.sing({ user, role: "Admin"}, SECRET_SERVER, {});
+router.post("/", async ( req, res ) => {
+    const { email, password } = req.body;
+    if ( email === "admin@email.com" && password === "admin1234"){
+        const token = jwt.sign({ email, role: "Admin"}, SERVER_SECRET, {
+            expiresIn: "40m",
+        });
         res.json({ token });
     } else {
-        const userFound = await userService.validateUser( user, pass );
+        const userFound = await userService.validateUser( email, password );
         if (userFound) {
-            const token = jwt.sing({ user, role: "Admin"}, SECRET_SERVER, {
-                expiresIN: "2h",
+            const token = jwt.sing({ email, role: "User"}, SERVER_SECRET, {
+                expiresIN: "20m",
             });
             return res.json({ token });
         }

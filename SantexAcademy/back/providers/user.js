@@ -72,12 +72,12 @@ const deleteUser = async (userId) => {
 
 
 
-const validateUser = async (options) => {
+const validateUser = async (email, password) => {
     try {
         const userFound = await User.findAll({
             where: {
-                email: options.user ,
-                password: options.pass 
+                email: email ,
+                password: password 
             },
         });
         if (userFound.length !== 0){
@@ -85,7 +85,7 @@ const validateUser = async (options) => {
         }
         return false;
     } catch (err) {
-        console.log(`Error when validating User ${userId}.\n ${err}`);
+        console.log(`Error when validating User ${email}.\n ${err}`);
         return false;
     }
 };
