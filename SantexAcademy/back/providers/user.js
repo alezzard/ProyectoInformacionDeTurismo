@@ -61,7 +61,7 @@ const putUser = async (userId, user) => {
 const deleteUser = async (userId) => {
     try {
         const deletedUser = await User.destroy(
-            {where: {userId}}
+            {where: {id:userId}}
         );
         return deletedUser;
     } catch (err) {
