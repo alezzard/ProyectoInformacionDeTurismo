@@ -4,11 +4,11 @@
 
     <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
       <input 
-         type="user" 
-         name="user" 
-         placeholder="User" 
+         type="email" 
+         name="email" 
+         placeholder="Email" 
          class="form-control form-control-lg" 
-         [(ngModel)]="userName"
+         [(ngModel)]="email"
          required>
       <input 
          type="password" 

@@ -15,7 +15,7 @@ export class LoginPageComponent implements OnInit {
   isLogged = false;
   isLogginFail = false;
   loginUser! : LoginUser;
-  userName!: string;
+  email!: string;
   password!: string;
   roles: string[] = [];
   errMsj!: string;
@@ -32,12 +32,12 @@ export class LoginPageComponent implements OnInit {
   }
 
      onLogin(): void {
-      this.loginUser = new LoginUser(this.userName, this.password); 
+      this.loginUser = new LoginUser(this.email, this.password); 
       this.authService.login(this.loginUser).subscribe(data => {
                  this.isLogged = true; 
                  this.isLogginFail = false; 
                  this.tokenService.setToken(data.token); 
-                 this.tokenService.setUserName(data.nombreUsuario);
+                 this.tokenService.setEmail(data.email);
                  this.tokenService.setAuthorities(data.authorities);
                  this.roles = data.authorities;
                  this.router.navigate(['encuesta'])
