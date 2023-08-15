@@ -1,32 +1,26 @@
 const express = require('express');
+const cors = require('cors');
 
 const { roleRouter, userRouter, authRouter } = require('../routes');
-const loggingMiddleware = require("../middleware/logging");
-const { initializeDB } = require("../config/db-config");
+const loggingMiddleware = require('../middleware/logging');
+const { initializeDB } = require('../config/db-config');
 
 const PORT = 3000;
 
 const app = express();
 
-//Application middlewares
-app.use(express.json());//parsea a json
-
+// Application middlewares
+app.use(express.json());// parsea a json
 
 app.use(loggingMiddleware);
 
-app.get("/user", (req, res) => {
-    console.log("User: ",req.user)
-    res.send(`<h1>Hello World in port ${PORT}</h1>`)
-});
+app.use(cors());
 
-app.use("/user", userRouter);
-app.use("/role", roleRouter);
-app.use("/login", authRouter);
+app.use('/user', userRouter);
+app.use('/role', roleRouter);
+app.use('/login', authRouter);
 
-
-
-
-app.listen(PORT, async() => {
-    await initializeDB();
-    console.log(`Server running in port ${PORT}`);
+app.listen(PORT, async () => {
+  await initializeDB();
+  console.log(`Server running in port ${PORT}`);
 });
