@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   public login(loginUser: LoginUser): Observable<JwtDto>{
-    return this.httpClient.post<JwtDto>(this.URL + 'login', loginUser);
+    return this.httpClient.post<JwtDto>(this.authURL + 'login', loginUser);
   }
 
 }
