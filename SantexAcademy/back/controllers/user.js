@@ -9,6 +9,19 @@ const createUser = async (req, res) => {
     }
 };
 
+const getAll = async (req,res,) =>{
+    try{
+        const usersFound = await userService.getAll();
+        if(!usersFound) {
+            res.status(404).json({action: 'getAll', error: 'Users Not Found'});
+        }else{
+            res.json(usersFound);
+        }
+    }catch(err){
+        res.status(500).json({action: 'getAll', error: err.message});
+    }
+};
+
 const getUser = async (req,res,) =>{
     try{
         const userFound = await userService.getUser(req.params.userId);
@@ -53,4 +66,4 @@ const deleteUser = async (req,res,) =>{
     }
 };
 
-module.exports = {createUser, getUser, putUser,  deleteUser };
+module.exports = {createUser, getAll, getUser, putUser,  deleteUser };

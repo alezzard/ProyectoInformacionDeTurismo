@@ -4,6 +4,11 @@ const createUser = async (body) => {
     return await userProvider.createUser(body);
 }
 
+const getAll = async () => {
+    const users = await userProvider.getAll();
+    return users;
+}
+
 const getUser = async (userId) => {
     const user = await userProvider.getUser(userId);
     return user;
@@ -20,8 +25,8 @@ const deleteUser = async (userId) => {
     return user;
 }
 
-const validateUser = async (user, pass) => {
-    const userFound = await userProvider.validateUser({user,pass});
+const validateUser = async (email, password) => {
+    const userFound = await userProvider.validateUser(email,password);
     
     return userFound;
 }
@@ -29,4 +34,4 @@ const validateUser = async (user, pass) => {
 
 
 
-module.exports = { createUser, getUser, validateUser, putUser, deleteUser }
+module.exports = { createUser, getAll, getUser, validateUser, putUser, deleteUser }
