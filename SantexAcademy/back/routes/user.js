@@ -4,6 +4,7 @@ const { userController } = require("../controllers")
 const { jwtValidMDW, userIsAdminMDW } = require("../middleware/auth");
 
 router.post("/", /* userIsAdminMDW, */ userController.createUser);
+router.get("/", /* jwtValidMDW, */ userController.getAll);
 router.get("/:userId", /* jwtValidMDW, */ userController.getUser);
 router.put("/:userId", /* jwtValidMDW, */ userController.putUser);
 router.put("/setRole/:userId", /* jwtValidMDW, */ userController.putUser);

@@ -12,13 +12,23 @@ const createUser = async (user) => {
     }
 };
 
+const getAll = async () => {
+    try {
+        const usersFound = await User.findAll();
+        /* const usersFound = await User.findAll({include: { all:true}});   */      
+        return usersFound;
+    } catch (err) {
+        console.log(`Error when fetching Users.\n ${err}`);
+        throw err;
+    }
+};
+
 const getUser = async (userId) => {
     try {
         const userFound = await User.findByPk(userId, { include: { all: true } });
         return userFound;
     } catch (err) {
         console.log(`Error when fetching User ${userId}.\n ${err}`);
-        /* console.log("Error when creating User.\n",err); */
         throw err;
     }
 };
@@ -76,14 +86,16 @@ const validateUser = async (email, password) => {
     try {
         const userFound = await User.findAll({
             where: {
-                email: email ,
-                password: password 
+                [Op.and] : [
+                    {email: email} ,
+                    {password: password }
+                ]              
             },
-        });
+        }, { include: {all: true}});
         if (userFound.length !== 0){
             return userFound;
         }
-        return false;
+       /*  return false */;
     } catch (err) {
         console.log(`Error when validating User ${email}.\n ${err}`);
         return false;
@@ -92,4 +104,4 @@ const validateUser = async (email, password) => {
 
 
 
-module.exports = { createUser, getUser, getUserByCriteria, putUser, deleteUser, validateUser,  };
+module.exports = { createUser, getAll, getUser, getUserByCriteria, putUser, deleteUser, validateUser,  };
