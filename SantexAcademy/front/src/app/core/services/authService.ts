@@ -10,17 +10,17 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  authURL = 'https://localhost:3000/auth';
+  URL = environment.API_URL;
 
   constructor(private httpClient: HttpClient) { }
 
 
   public new(users: Users): Observable<any>{
-    return this.httpClient.post<any>(this.authURL + 'nuevo', users);
+    return this.httpClient.post<any>(this.URL + 'user', users);
   }
 
   public login(loginUser: LoginUser): Observable<JwtDto>{
-    return this.httpClient.post<JwtDto>(this.authURL + 'login', loginUser);
+    return this.httpClient.post<JwtDto>(this.URL + 'login', loginUser);
   }
 
 }
