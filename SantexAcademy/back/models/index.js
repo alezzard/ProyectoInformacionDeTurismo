@@ -37,8 +37,9 @@ db.Sequelize = Sequelize;
 module.exports = db;*/
 const User = require("./user");
 const Role = require("./role");
+const Survey = require("./survey");
 
 
 
 
-module.exports = { User,Role };
+module.exports = { User, Role, Survey };

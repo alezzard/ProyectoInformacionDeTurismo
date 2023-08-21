@@ -22,6 +22,7 @@ module.exports = app; */
 
 const roleRouter = require("./role");
 const userRouter = require("./user");
+const surveyRouter = require("./survey");
 const authRouter = require("./auth");
 
-module.exports = { roleRouter, userRouter, authRouter };
+module.exports = { roleRouter, userRouter, authRouter, surveyRouter, };

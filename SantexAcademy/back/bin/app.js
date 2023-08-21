@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const { roleRouter, userRouter, authRouter } = require('../routes');
+const { roleRouter, userRouter, authRouter,  surveyRouter } = require('../routes');
 const loggingMiddleware = require('../middleware/logging');
 const { initializeDB } = require('../config/db-config');
 
@@ -18,6 +18,7 @@ app.use(cors());
 
 app.use('/user', userRouter);
 app.use('/role', roleRouter);
+app.use('/survey', surveyRouter);
 app.use('/login', authRouter);
 
 app.listen(PORT, async () => {
