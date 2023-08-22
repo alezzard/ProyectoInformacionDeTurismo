@@ -1,4 +1,4 @@
-/* eslint-disable global-require */
+/*// eslint-disable global-require 
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -34,4 +34,12 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+module.exports = db;*/
+const User = require("./user");
+const Role = require("./role");
+const Survey = require("./survey");
+
+
+
+
+module.exports = { User, Role, Survey };

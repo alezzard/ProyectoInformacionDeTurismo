@@ -1,0 +1,40 @@
+<div class="page">
+  <div class="container">
+    <h1>Log In</h1>
+
+    <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+      <input 
+         type="email" 
+         name="email" 
+         placeholder="Email" 
+         class="form-control form-control-lg" 
+         [(ngModel)]="email"
+         required>
+      <input 
+         type="password" 
+         name="password" 
+         placeholder="Password" 
+         class="form-control form-control-lg"
+         [(ngModel)]="password" 
+         required>
+      <button type="submit">Log in</button>
+    </form>
+
+      <button type="submit" (click)="register()">Registrate Ahora</button>
+
+      <div id="remember-container">
+        <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked" />
+        <span id="remember">Remember me</span>
+        <span id="forgotten">Forgotten password</span>
+      </div>
+  </div>
+
+  <!-- Forgotten Password Container -->
+  <div id="forgotten-container">
+    <h1>Forgotten</h1>
+    <form>
+      <input type="email" name="email" placeholder="E-mail">
+      <a href="#" class="orange-btn">Get new password</a>
+    </form>
+  </div>
+</div>
