@@ -1,4 +1,4 @@
-const Express = require('express');
+/* const Express = require('express');
 
 // Middlewares:
 const rootPath = require('../middleware/root_path.middleware');
@@ -18,4 +18,11 @@ app.use('/', rootPath.handler);
 app.use(rootPath.setHeaders);
 app.use(errors.handler);
 
-module.exports = app;
+module.exports = app; */
+
+const roleRouter = require("./role");
+const userRouter = require("./user");
+const surveyRouter = require("./survey");
+const authRouter = require("./auth");
+
+module.exports = { roleRouter, userRouter, authRouter, surveyRouter, };

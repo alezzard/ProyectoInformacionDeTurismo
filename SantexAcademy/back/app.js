@@ -1,4 +1,4 @@
-require('dotenv').config();
+/* require('dotenv').config();
 
 // Express Dependencies:
 const express = require('express');
@@ -87,3 +87,4 @@ models.sequelize.authenticate()
 
 app.use('/', routes);
 module.exports = app;
+ */
