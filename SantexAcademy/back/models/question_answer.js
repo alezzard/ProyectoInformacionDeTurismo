@@ -1,16 +1,20 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db-config");
-const User = require("./user");
+const Survey = require("./survey");
 
-const Survey = sequelize.define("surveys",{
+const Question_Answer = sequelize.define("Question_Answer",{
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    name: {
+    question: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
+    },
+    answer: {
+        type: DataTypes.STRING,
     },
     description: {
         type: DataTypes.STRING,
@@ -18,11 +22,11 @@ const Survey = sequelize.define("surveys",{
     },
 });
 
-Survey.belongsToMany(User, { through: 'Users_Surveys'});
-User.belongsToMany(Survey, { through: 'Users_Surveys'});
+Question_Answer.belongsToMany(Survey, { through: 'Question_Answer_Surveys'});
+Survey.belongsToMany(Question_Answer, { through: 'Question_Answer_Surveys'});
 /* 
 User.belongsToMany(Profile, { through: 'User_Profiles' });
 Profile.belongsToMany(User, { through: 'User_Profiles' });
  */
 
-module.exports = Survey;
+module.exports = Question_Answer;

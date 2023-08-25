@@ -4,6 +4,7 @@ const { roleController } = require("../controllers")
 
 
 router.post("/", roleController.createRole);
+router.get("/", /* jwtValidMDW, */ roleController.getAll);
 router.get("/:roleId", roleController.getRole);
 router.put("/:roleId", roleController.putRole); 
  router.delete("/:roleId", /* userIsAdminMDW, */ roleController.deleteRole); 
