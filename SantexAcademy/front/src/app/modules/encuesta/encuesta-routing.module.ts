@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { EncuestaPageComponent } from './encuesta-page/encuesta-page.component';
+import { authGuard } from 'src/app/core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -8,8 +9,8 @@ const routes: Routes = [
     component: EncuestaPageComponent,
     children: [
       
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
