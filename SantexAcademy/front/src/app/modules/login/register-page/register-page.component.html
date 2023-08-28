@@ -2,19 +2,21 @@
   <div class="container">
     <h1>Registrate Aqui</h1>
 
-    <form #f="ngForm" novalidate>
-      <div class="name">
+    <form #f="ngForm" (ngSubmit)="registerUser()" novalidate>
+      <div class="firstName">
       <input 
-         type="name" 
-         name="name" 
-         placeholder="Name" 
+         type="firstName" 
+         name="firstName" 
+         placeholder="FirstName" 
+         [(ngModel)]="firstName"
          class="form-control form-control-lg" 
          
          required>
       <input 
          type="lastname" 
          name="lastname" 
-         placeholder="Lastname" 
+         placeholder="Lastname"
+         [(ngModel)]="lastname"
          class="form-control form-control-lg"
          
          required>
@@ -24,6 +26,7 @@
          type="email" 
          name="email" 
          placeholder="Email" 
+         [(ngModel)]="email"
          class="form-control form-control-lg"
          
          required>
@@ -31,6 +34,7 @@
          type="password" 
          name="password" 
          placeholder="Password" 
+         [(ngModel)]="password"
          class="form-control form-control-lg"
          
          required>

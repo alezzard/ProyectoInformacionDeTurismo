@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/authService';
+import { Users } from 'src/app/models/users';
 
 @Component({
   selector: 'app-register-page',
@@ -7,4 +10,27 @@ import { Component } from '@angular/core';
 })
 export class RegisterPageComponent {
 
+  firstName!: string;
+  lastname!: string;
+  email!: string;
+  password!: string;
+  users!: Users;
+  errMsj!: string;
+
+  constructor(private authService: AuthService, private router: Router){};
+
+  registerUser():void {
+    this.users = new Users(this.firstName, this.lastname, this.email, this.password);
+    this.authService.new(this.users).subscribe(user => {
+      user.firstName = this.users.firstName;
+      user.lastName = this.users.lastName;
+      user.email = this.users.email;
+      user.password = this.users.password;
+      this.router.navigate(['login'])
+    }, err => {
+      this.errMsj = err.error.mensaje;
+      console.log(this.errMsj);
+    });
+      
+  }
 }
