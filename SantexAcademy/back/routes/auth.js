@@ -22,13 +22,13 @@ router.post("/", async (req, res) => {
                 const token = jwt.sign({ email, role: "Admin" }, SERVER_SECRET, {
                     expiresIn: "40m",
                 });
-                res.json({ token });
+                res.json({ token, "authorities": "Admin" });
             } else if (roleId == 2) {
 
                 const token = jwt.sign({ email, role: "User" }, SERVER_SECRET, {
                     expiresIn: "40m",
                 });
-                return res.json({ token });
+                return res.json({ token, "authorities": "User" });
             }
 
         } else {

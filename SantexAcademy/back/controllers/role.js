@@ -9,6 +9,18 @@ const createRole = async (req, res) => {
         res.status(500).json({action: 'createRole', error: err.message});
     }
 };
+const getAll = async (req,res,) =>{
+    try{
+        const usersFound = await roleService.getAll();
+        if(!usersFound) {
+            res.status(404).json({action: 'getAll', error: 'Users Not Found'});
+        }else{
+            res.json(usersFound);
+        }
+    }catch(err){
+        res.status(500).json({action: 'getAll', error: err.message});
+    }
+};
 
 const getRole = async (req,res,) =>{
     try{
@@ -52,4 +64,4 @@ const deleteRole = async (req,res,) =>{
  
 
 
-module.exports = {createRole,  getRole, putRole, deleteRole };
+module.exports = {createRole, getAll, getRole, putRole, deleteRole };

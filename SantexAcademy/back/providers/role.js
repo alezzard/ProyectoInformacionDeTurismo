@@ -10,6 +10,17 @@ const createRole = async (role) => {
         throw err;
     }
 };
+
+const getAll = async () => {
+    try {
+        const rolesFound = await Role.findAll();
+        /* const usersFound = await User.findAll({include: { all:true}});   */      
+        return rolesFound;
+    } catch (err) {
+        console.log(`Error when fetching Roles.\n ${err}`);
+        throw err;
+    }
+};
  
 
 
@@ -50,4 +61,4 @@ const deleteRole = async (roleId) => {
     }
 };
 
-module.exports = { createRole,  getRole, putRole, deleteRole };
+module.exports = { createRole, getAll, getRole, putRole, deleteRole };

@@ -24,5 +24,6 @@ const roleRouter = require("./role");
 const userRouter = require("./user");
 const surveyRouter = require("./survey");
 const authRouter = require("./auth");
+const question_answerRouter = require("./question_answer");
 
-module.exports = { roleRouter, userRouter, authRouter, surveyRouter, };
+module.exports = { roleRouter, userRouter, authRouter, surveyRouter, question_answerRouter, };

@@ -38,8 +38,9 @@ module.exports = db;*/
 const User = require("./user");
 const Role = require("./role");
 const Survey = require("./survey");
+const Question_Answer = require("./question_answer");
 
 
 
 
-module.exports = { User, Role, Survey };
+module.exports = { User, Role, Survey, Question_Answer };

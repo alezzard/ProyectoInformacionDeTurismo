@@ -4,6 +4,11 @@ const createRole = async (role) => {
     return await roleProvider.createRole(role);
 }
 
+const getAll = async () => {
+    const users = await roleProvider.getAll();
+    return users;
+}
+
 const getRole = async (roleId) => {
     const role = await roleProvider.getRole(roleId);
     return role;
@@ -18,4 +23,4 @@ const deleteRole = async (roleId) => {
     return deletedRole;
 } 
 
-module.exports = { createRole,getRole, putRole, deleteRole }
+module.exports = { createRole, getAll, getRole, putRole, deleteRole }
