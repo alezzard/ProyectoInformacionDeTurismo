@@ -14,23 +14,25 @@ export class RegisterPageComponent {
   lastname!: string;
   email!: string;
   password!: string;
+  roleId!: 2;
   users!: Users;
   errMsj!: string;
 
   constructor(private authService: AuthService, private router: Router){};
 
   registerUser():void {
-    this.users = new Users(this.firstName, this.lastname, this.email, this.password);
+    this.users = new Users(this.firstName, this.lastname, this.email, this.password, this.roleId);
     this.authService.new(this.users).subscribe(user => {
       user.firstName = this.users.firstName;
       user.lastName = this.users.lastName;
       user.email = this.users.email;
       user.password = this.users.password;
+      user.roleId = this.roleId;
       this.router.navigate(['login'])
     }, err => {
       this.errMsj = err.error.mensaje;
       console.log(this.errMsj);
     });
-      
+          
   }
 }
