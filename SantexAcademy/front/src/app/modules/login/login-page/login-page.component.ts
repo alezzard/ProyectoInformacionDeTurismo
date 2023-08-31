@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/authService';
 import { TokenService } from 'src/app/core/services/token.service';
 import { LoginUser } from 'src/app/models/login-user';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -40,11 +41,26 @@ export class LoginPageComponent implements OnInit {
                  this.tokenService.setEmail(data.email);
                  this.tokenService.setAuthorities(data.authorities);
                  this.roles = data.authorities;
+                 Swal.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: 'Login success',
+                  showConfirmButton: false,
+                  width: '25em',
+                  timer: 1500
+                })
                  this.router.navigate(['home'])
                 }, err =>{
                   this.isLogged = false;
                   this.isLogginFail = true;
                   this.errMsj = err.error.mensaje;
+                  Swal.fire({
+                    icon: 'error',
+                    width: '20em',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    text: 'Email o password incorrecto',
+                  })
                   console.log(this.errMsj);
                 });
    
