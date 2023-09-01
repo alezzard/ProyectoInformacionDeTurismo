@@ -1,1 +1,40 @@
-<p>encuesta-page works!</p>
+<div class="page">
+    <div class="container">
+        <div class="toolbar">
+            <mat-toolbar>
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                
+                <mat-menu #menu="matMenu">
+                    <div class="matMenu">
+                        <button mat-menu-item>
+                            <mat-icon>add</mat-icon>
+                            <span>Nueva Encuesta</span>
+                        </button>
+                        <button mat-menu-item>
+                            <mat-icon>edit</mat-icon>
+                            <span>Editar Encuesta</span>
+                        </button>
+                        <button mat-menu-item>
+                            <mat-icon>search</mat-icon>
+                            <span>Buscar Encuesta</span>
+                        </button>
+                    </div>
+                </mat-menu>
+                
+                <span class="example-spacer">
+                    <span class="container-subtitle">
+                        <h2>Encuesta Turismo Mina Clavero</h2>
+                    </span>
+                </span>
+                <button mat-icon-button (click)="backHome()">
+                    <mat-icon>undo</mat-icon>
+                </button>
+                <button mat-icon-button (click)="logout()">
+                    <img src="../../../../assets/img/logout.png">
+                </button>
+            </mat-toolbar>
+        </div>
+    </div>
+</div>

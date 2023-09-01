@@ -1,0 +1,61 @@
+.page { 
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url(http://sd-1264766-h00001.ferozo.net/admin/wp-content/uploads/2021/01/pn_quebrada_del_condorito_ph_parquesnacionales_01-e1629827548849.jpg); 
+    -webkit-background-size: cover;
+    -moz-background-size: cover; 
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden; 
+    width: 100%;
+    height: 100%;
+    padding: 0%;
+    margin: 0%;
+  }
+
+  .container{
+    backdrop-filter: blur(15px);
+    border: solid 1px;
+    border-color: rgb(236, 234, 234);
+    border-radius: 0px 10px 0px 10px;
+    margin: 2em;
+    font-family: 'Open Sans Condensed', sans-serif;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+    padding: 1em;
+  }
+
+  .container-subtitle {
+    padding: 1em;
+  }
+
+  button {
+    background-color: transparent;
+    margin: 1em;
+  }
+
+  img {
+    width: 3.1em;
+  }
+
+  .example-spacer{
+    display: flex;
+    justify-content: center;
+  }
+
+  .matMenu {
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 6.5em 3em;
+    border: solid 1px;
+    border-color: rgb(236, 234, 234);
+    border-radius: 0px 10px 0px 10px;
+  }
+

@@ -6,11 +6,12 @@ import { EncuestaRoutingModule } from './encuesta-routing.module';
 
 @NgModule({
   declarations: [
-    EncuestaPageComponent
+    
   ],
   imports: [
     CommonModule,
-    EncuestaRoutingModule
+    EncuestaRoutingModule,
+    EncuestaPageComponent
   ],
   exports: [
     EncuestaPageComponent,
