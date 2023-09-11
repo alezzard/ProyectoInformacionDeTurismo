@@ -23,7 +23,9 @@ router.post("/", async (req, res) => {
                     expiresIn: "40m",
                 });
                 res.json({ token, "authorities": "Admin" });
-            } else if (roleId == 2) {
+            
+            /* } else if (roleId == 2) { */
+            } else if (roleId !== 1) { //probar que no sea una vulnerabilidad..
 
                 const token = jwt.sign({ email, role: "User" }, SERVER_SECRET, {
                     expiresIn: "40m",

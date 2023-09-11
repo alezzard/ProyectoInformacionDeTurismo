@@ -9,7 +9,20 @@ const createQuestion_Answer = async (req, res) => {
     }
 };
 
-const getAllQuestions = async (req, res,) => {
+const getAll = async(req,res) => {
+    try{
+        const question_answersFound = await question_answerService.getAll();
+        if (!question_answersFound || question_answersFound.length == 0 ){
+            res.status(404).json({action: 'getAll', error: 'Question_Answers Not Found'});
+        } else {
+            res.json(question_answersFound);
+        }
+    } catch(err){
+        res.status(500).json({action: 'getAll', error: err.message});
+    }
+};
+
+/* const getAllQuestions = async (req, res,) => {
     try {
         const question_answersFound = await question_answerService.getAllQuestions();
         if (!question_answersFound) {// ver que lenght sea distinto de cero
@@ -33,20 +46,22 @@ const getAllAnswers = async (req, res,) => {
     } catch (err) {
         res.status(500).json({ action: 'getAllAnswers', error: err.message });
     }
-};
+}; */
 
 const getQuestion_Answer = async (req, res,) => {
     try {
-        const { questionid, answerid } = req.params;
-        if (!answerid) {
-            const questionFound = await question_answerService.getQuestion_Answer(answerid);
+        const { questionId, answerId } = req.params;
+        if (!answerId) {
+            console.log("")
+            const questionFound = await question_answerService.getQuestion_Answer(questionId);
             if (!questionFound) {
                 res.status(404).json({ action: 'getQuestion', error: 'Question Not Found' });
             } else {
                 res.json(questionFound);
             }
-        }else{
-            const answerFound = await question_answerService.getQuestion_Answer(questionid);
+        }else if(!questionId){
+            console.log("ra")
+            const answerFound = await question_answerService.getQuestion_Answer(answerId);
             if (!answerFound) {
                 res.status(404).json({ action: 'getAnswer', error: 'Answer Not Found' });
             } else {
@@ -59,7 +74,7 @@ const getQuestion_Answer = async (req, res,) => {
 };
 
 const putQuestion_Answer = async (req, res,) => {
-    const question_answerId = req.params.question_answerId;
+    const question_answerId = req.params.questionId;
     const question_answer = req.body;
 
     try {
@@ -78,7 +93,7 @@ const putQuestion_Answer = async (req, res,) => {
 
 const deleteQuestion_Answer = async (req, res,) => {
     try {
-        const question_answer = await question_answerService.deleteQuestion_Answer(req.params.question_answerId);
+        const question_answer = await question_answerService.deleteQuestion_Answer(req.params.questionId);
         if (!question_answer) {
             res.status(404).json({ action: 'deleteQuestion_Answer', error: 'Question_Answer Not Found' });
         } else {
@@ -89,4 +104,4 @@ const deleteQuestion_Answer = async (req, res,) => {
     }
 };
 
-module.exports = { createQuestion_Answer, getAllQuestions, getAllAnswers, getQuestion_Answer, putQuestion_Answer, deleteQuestion_Answer };
+module.exports = { createQuestion_Answer, getAll, /* getAllQuestions, getAllAnswers, */ getQuestion_Answer, putQuestion_Answer, deleteQuestion_Answer };
