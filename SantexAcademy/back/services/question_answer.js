@@ -11,7 +11,7 @@ const getAll = async () => {
 }
 
 const getQuestion_Answer = async (question_answerId) => {
-    const surveyFound = await question_answerProvider.getQuestion_Answer(question_answerId);
+    const surveyFound = await question_answerProvider.getQuestion_Answer    (question_answerId);
     return surveyFound;
 }
 

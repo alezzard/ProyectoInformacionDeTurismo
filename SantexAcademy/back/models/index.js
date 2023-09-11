@@ -39,8 +39,12 @@ const User = require("./user");
 const Role = require("./role");
 const Survey = require("./survey");
 const Question_Answer = require("./question_answer");
+const Type_Question = require("./type_question");
 
-
-
-
-module.exports = { User, Role, Survey, Question_Answer };
+module.exports = { 
+  User, 
+  Role, 
+  Survey, 
+  Question_Answer,
+  Type_Question
+};
