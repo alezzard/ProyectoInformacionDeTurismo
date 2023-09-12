@@ -16,4 +16,6 @@ export class HomePageComponent {
     this.router.navigate(['/login']);
   }
 
+  showBtn: boolean = false;
+
 }
