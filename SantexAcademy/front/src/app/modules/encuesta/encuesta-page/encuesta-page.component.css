@@ -17,12 +17,39 @@
   }
 
   .container{
+    margin: 2em;
+    font-family: 'Open Sans Condensed', sans-serif;
+  }
+
+  .container-subtitle {
+    padding: 1em;
+  }
+
+  .container-encuesta {
+    margin: 1em 0;
+    padding: 1em;
     backdrop-filter: blur(15px);
     border: solid 1px;
     border-color: rgb(236, 234, 234);
     border-radius: 0px 10px 0px 10px;
-    margin: 2em;
-    font-family: 'Open Sans Condensed', sans-serif;
+  }
+
+  .container-datos-personales{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      padding: 1em;   
+  }
+
+  .container-question{
+    margin: 0 2em;
+  }
+
+  .container-procedencia {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 1em;
   }
 
   .example-spacer {
@@ -30,11 +57,9 @@
     padding: 1em;
   }
 
-  .container-subtitle {
-    padding: 1em;
-  }
+ 
 
-  button {
+  .button-toolbar {
     background-color: transparent;
     margin: 1em;
   }
@@ -48,14 +73,21 @@
     justify-content: center;
   }
 
-  .matMenu {
+  ::ng-deep .customize-menu {
     backdrop-filter: blur(15px);
+    background: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 6.5em 3em;
+  }
+
+  .container-toolbar {
+    backdrop-filter: blur(15px);
     border: solid 1px;
     border-color: rgb(236, 234, 234);
     border-radius: 0px 10px 0px 10px;
-  }
+}
 
+.toolbar {
+  background: none;
+}

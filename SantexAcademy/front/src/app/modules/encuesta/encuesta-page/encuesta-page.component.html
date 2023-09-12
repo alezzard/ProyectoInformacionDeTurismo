@@ -1,40 +1,74 @@
 <div class="page">
     <div class="container">
-        <div class="toolbar">
-            <mat-toolbar>
-                <button mat-icon-button [matMenuTriggerFor]="menu">
+        <div class="container-toolbar">
+            <mat-toolbar class="toolbar">
+                <button class="button-toolbar" mat-icon-button [matMenuTriggerFor]="menu">
                     <mat-icon>menu</mat-icon>
                 </button>
-                
-                <mat-menu #menu="matMenu">
-                    <div class="matMenu">
-                        <button mat-menu-item>
-                            <mat-icon>add</mat-icon>
-                            <span>Nueva Encuesta</span>
-                        </button>
-                        <button mat-menu-item>
-                            <mat-icon>edit</mat-icon>
-                            <span>Editar Encuesta</span>
-                        </button>
-                        <button mat-menu-item>
-                            <mat-icon>search</mat-icon>
-                            <span>Buscar Encuesta</span>
-                        </button>
-                    </div>
+                <mat-menu class="customize-menu" #menu="matMenu">
+                    <button (click)="newEncuesta()" mat-menu-item>
+                        <mat-icon>add</mat-icon>
+                        <span>Nueva Encuesta</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>edit</mat-icon>
+                        <span>Editar Encuesta</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>search</mat-icon>
+                        <span>Buscar Encuesta</span>
+                    </button>
+                    <button mat-menu-item (click)="newQuestion()">
+                        <mat-icon>
+                        <span class="material-symbols-outlined">
+                            settings_b_roll
+                            </span>
+                        </mat-icon>
+                        <span>Crear Preguntas</span>
+                    </button>
                 </mat-menu>
-                
                 <span class="example-spacer">
                     <span class="container-subtitle">
                         <h2>Encuesta Turismo Mina Clavero</h2>
                     </span>
                 </span>
-                <button mat-icon-button (click)="backHome()">
+                <button class="button-toolbar" mat-icon-button (click)="backHome()">
                     <mat-icon>undo</mat-icon>
                 </button>
-                <button mat-icon-button (click)="logout()">
+                <button class="button-toolbar" mat-icon-button (click)="logout()">
                     <img src="../../../../assets/img/logout.png">
                 </button>
             </mat-toolbar>
+        </div>
+        <div *ngIf="showE" class="container-encuesta">
+            <p>
+                Sr./a Turista:
+                La siguiente encuesta es parte del relevamiento que estamos desarrollando desde la Secretaria de Turismo
+                de la Municipalidad de Mina Clavero, que tiene por finalidad conocer cuáles sus preferencias, medios por
+                los ha conocido nuestro destino y nivel de satisfacción; Esta información será de suma importancia para
+                desarrollar planes estratégicos que permitirán hacer de nuestra localidad el mejor lugar para sus
+                vacaciones.
+                Cabe aclarar que los datos son confidenciales y anónimos.
+
+            </p>
+            <div class="container-datos-personales">
+                <mat-form-field class="container-question">
+                    <mat-label>Edad</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field class="container-question">
+                    <mat-label>Sexo</mat-label>
+                    <mat-select>
+                        <mat-option value="masulino">Masculino</mat-option>
+                        <mat-option value="femenino">Femenino</mat-option>
+                    </mat-select>
+                </mat-form-field>      
+            </div>
+            <div class="container-procedencia">
+             <h3>Procedencia</h3>
+             <mat-checkbox>Córdoba Capital</mat-checkbox>
+            </div>
+            <button (click)="saveEncuesta()"> Guardar </button>
         </div>
     </div>
 </div>
