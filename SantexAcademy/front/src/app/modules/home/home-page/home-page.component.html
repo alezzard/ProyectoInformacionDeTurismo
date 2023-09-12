@@ -1,4 +1,109 @@
-<p>home-page works!</p>
-<button (click)="logout()">
-    <img src="../../../../assets/img/logout.png" alt="">
-</button>
+  <head>    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">   
+  </head> 
+  
+  <div class="page">
+
+    <!-- REDES -->
+    <div class="li-social-icons">
+      <ul class="social-icons">
+        <li><a href="https://www.instagram.com/minaclaveroofc/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+        <li><a href="https://twitter.com/MinaClaveroOfc" target="_blank"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="https://www.facebook.com/MinaClaveroOK/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+      </ul>  
+    </div> 
+
+    <!--  HEADER  -->
+    <div class="container_titulo">      
+      <div class="div_titulo">
+        <a class="a_titulo" href= "http://www.minaclavero.gov.ar/" target="_blank">Municipalidad de Mina Clavero</a>
+        <p>Valle de Traslasierra - Provincia de Córdoba</p>   
+      </div>      
+    </div>  
+    
+    <!-- DIV FOTO -->
+
+    <div class="container-fluid" style="display:flex">
+        <div class="row justify-content-center">
+          <div class="col-sm-6">
+            <div class="container_bienvenida">
+              <!-- TARJETA BIENVENIDA  -->
+              <div class="infocardContainer" style="margin-left: 150px;">
+                <div id="main">
+                  <img src="../../../../assets/img/foto_adm.png"  alt="Mi Imagen">
+                </div>
+                <div id="textbois">
+                  <h1 style="color: black; margin-top: 40px;">Bienvenido, @Admin</h1>
+                  <a href="mailto:limecicila@gmail.com" style="color: black;">admin@gmail.com</a>           
+                </div>
+              </div> 
+            </div>   
+          </div>
+        </div>
+      
+
+      <!-- DIV OPCIONES -->
+    
+      <div class="col-sm-6">
+          <div class="container_opciones">
+            
+          <div *ngIf="showBtn">
+              <!--    EDITAR PREGUNTAS    -->
+            <div class="infocardContainer_button">
+              <div id="main_button">
+                <img src="../../../../assets/img/icono_enc.png" alt="Editar Preguntas">
+              </div>
+              <div id="textbois">
+                <a class="a_button" href="#" target="_blank" style="color: black;">Editar Preguntas</a>    
+              </div>  
+            </div> 
+
+            <!--  DASHBOARD   -->
+            <div class="infocardContainer_button">
+              <div id="main_button">
+                <img src="../../../../assets/img/dashboard.png" alt="Dashboard">
+              </div>
+              <div id="textbois">
+                <a class="a_button" href="#" target="_blank" style="color: black;">Dashboard</a>    
+              </div>            
+            </div> 
+          </div>
+
+            <!--  ENCUESTAS    -->
+            <div class="infocardContainer_button">
+              <div id="main_button">
+                <img src="../../../../assets/img/question.png" alt="Encuesta">
+              </div>
+              <div id="textbois">
+                <a class="a_button" href="#" target="_blank" style="color: black;">Encuestas</a>    
+                </div>  
+            </div> 
+
+          <!--  UBICACION    -->
+            <div class="infocardContainer_button">
+              <div id="main_button">
+                <img src="../../../../assets/img/ubicacion.png" alt="Maps">
+              </div>
+              <div id="textbois">
+                <a class="a_button" href="#" target="_blank" style="color: black;">Ubicación</a>     
+              </div>  
+            </div>
+
+          <!--  CERRAR SESION    -->
+            <div class="infocardContainer_button">
+              <div id="main_button">
+                <img src="../../../../assets/img/icono_salir1.png" alt="Cerrar Sesión">
+              </div>
+              <div id="textbois">
+                <a class="a_button" href="#" target="_blank" style="color: black;">Cerrar Sesión</a>    
+              </div>            
+            </div> 
+        </div>
+      </div>  
+    </div>
+  </div> 
+
+
+

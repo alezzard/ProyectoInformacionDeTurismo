@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/db-config");
-const Survey = require("./survey");
+const { Survey } = require("./index");
+
 
 const Question_Answer = sequelize.define("Question_Answer",{
     id: {
@@ -22,9 +23,9 @@ const Question_Answer = sequelize.define("Question_Answer",{
     },
 });
 
-Question_Answer.belongsToMany(Survey, { through: 'Question_Answer_Surveys'});
+/*Question_Answer.belongsToMany(Survey, { through: 'Question_Answer_Surveys'});
 Survey.belongsToMany(Question_Answer, { through: 'Question_Answer_Surveys'});
-/* 
+ 
 User.belongsToMany(Profile, { through: 'User_Profiles' });
 Profile.belongsToMany(User, { through: 'User_Profiles' });
  */

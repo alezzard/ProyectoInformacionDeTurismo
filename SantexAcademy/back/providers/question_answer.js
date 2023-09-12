@@ -13,8 +13,8 @@ const createQuestion_Answer = async (question_answer) => {
 
 const getAll = async () => {
     try {
-        const question_answersFound = await Question_Answer.findAll();
-        /* const question_answersFound = await Question_Answer.findAll({include: { all:true}});   */      
+        /*const question_answersFound = await Question_Answer.findAll(); */
+         const question_answersFound = await Question_Answer.findAll({include: { all:true}});        
         return question_answersFound;
     } catch (err) {
         console.log(`Error when fetching Question_Answers.\n ${err}`);
