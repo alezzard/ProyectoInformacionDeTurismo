@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@700&family=Montserrat:wght@700;800;900&display=swap');
+
+.page { 
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;  
+  background: url(../../../../assets/img/fondo_1.png); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover; 
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden; 
+  width: 100%;
+  height: 100%;
+  padding: 0%;
+  margin: 0%; 
+} 
+
+/* <!-- REDES --> */
+
+.li-social-icons {
+  height: 100px;  
+  display: flex;
+  margin-top: 0px;
+  justify-content:end;
+}
+
+.social-icons {
+  padding: 0; 
+  margin: 1em; 
+  height: 50%;  
+  list-style: none;
+}
+
+.social-icons li {
+  margin: 1em;
+  font-size: 1em;
+  position: relative;
+  display: inline-block;
+}
+
+.social-icons i {
+  top: 30%; 
+  left: 35%;
+  color: #fff;
+  position: absolute;
+  transition: all 265ms ease-out;
+}
+
+.social-icons a {
+  display: inline-block;
+}
+
+.social-icons a:before {
+  width: 40px;
+  height: 40px;
+  content: " ";
+  display: block;  
+  border-radius: 100%;
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  background: linear-gradient(121deg, rgba(255, 255, 255, 0.562) 13%, rgb(4, 90, 143) 100%);
+  transition: all 265ms ease-out}
+
+.social-icons a:hover:before {
+  transform: scale(0);
+  transition: all 265ms ease-in;
+}
+
+.social-icons a:hover i {
+  transform: scale(4.4);
+  -ms-transform: scale(4.4);
+  -webkit-transform: scale(4.4);   
+  background: linear-gradient(121deg, rgb(255, 255, 255) 13%, rgb(5, 5, 5) 100%);
+  -webkit-background-clip: text;  
+  -webkit-text-fill-color: transparent;
+  transition: all 265ms ease-in;
+  background-clip: text;
+}
+
+/*  <!--  HEADER  -->  */
+.container_titulo { 
+  height: 15%;    
+  margin-top: 30px;    
+}
+
+.div_titulo{  
+  height: 30%;
+  display: flex;
+  text-align: center;
+  flex-direction: column;      
+  }
+
+.a_titulo{
+  color: black; 
+  font-size: 45px; 
+  font-weight: bold; 
+  text-decoration: none;      
+  font-family:Arial, Helvetica, sans-serif;
+} 
+
+p{
+  font-size: 25px;
+  margin-top: 20px;
+}
+
+/* TARJETA BIENVENIDA  */
+.container_bienvenida{
+  display: flex;
+  margin-left: 400px;   
+  width: 800px;
+}
+
+.infocardContainer * {
+  font-weight: 200; 
+  font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+.infocardContainer {
+  margin:auto;
+  width: 200px; 
+  display: flex; 
+  height: 200px; 
+  margin-top: 50px;
+  border-radius: 100px;   
+  background: linear-gradient(121deg, rgba(255,255,255,0) 13%, rgba(0,159,255,1) 100%);  
+  transition: all 500ms ease-in;
+  transition-delay: 1s;
+} 
+
+.infocardContainer:hover {
+  width: 500px;
+  transition: all 1s ease-out;
+  border-radius: 100px 10px 100px 100px;
+} 
+
+.infocardContainer div {
+  width: 100%;
+  flex-shrink: 1;
+} 
+
+.infocardContainer div * {
+  width: 0;
+  height: auto;
+  display: flex;
+  color: white;
+  --flex: inherit;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: hidden; 
+  transition: all 450ms ease-in;
+  transition-delay: 1s;
+} 
+
+.infocardContainer:hover div *{  
+  width: 100%;
+  height: auto;
+  display: flex;
+  visibility: visible;
+  transition: all 1s ease-out;
+  transition-delay: 500ms;
+}
+
+.infocardContainer #main, .infocardContainer #main img{ 
+  width: 200px; 
+  height: 200px; 
+  flex-shrink: 0;
+  object-fit: cover;
+  padding-right: 10px;
+  border-radius: 100%;
+}  
+
+.infocardContainer #main img{
+  height: 180px;
+  width: 180px;
+  display: float;
+  transition: none;
+  position: relative; 
+  border: 2px solid white;
+  margin: 0 0 0 0; padding: 0 0 0 0;
+} 
+
+.infocardContainer #textbois {
+  position: relative;
+}
+
+.infocardContainer #textbois #hotlinks {
+  bottom: 5px;
+  display: flex;
+  max-width: 60%;
+  max-height: 30px; 
+  position:absolute; 
+  border-radius: 13px;
+  --background-color: white;
+  justify-content: space-between;
+}
+
+.infocardContainer #textbois #hotlinks * {
+  max-width: 30px;
+  border-radius: 25px;
+  --margin: 0 1px 0 1px;
+  background-color: white;
+} 
+
+/* TARJETAS OPCIONES */
+.container_opciones{
+  display:flex;   
+  flex-direction: column;         
+}  
+
+.a_button{     
+  margin-top: 10px;
+  font-weight: 100; 
+  font-size: large;
+  font-style: italic; 
+  text-decoration: none;
+  font-family: "Fira Sans Condensed", sans-serif;  
+} 
+
+.infocardContainer_button {  
+  width: 40px;
+  margin: 10px; 
+  height: 40px;
+  display: flex;  
+  margin-top: 10px;   
+  border-radius: 100px;  
+  background: linear-gradient(121deg, rgba(255,255,255,0) 13%, rgba(0,159,255,1) 100%);
+  transition: all 500ms ease-in;
+  transition-delay: 1s;
+}
+
+.infocardContainer_button:hover {
+  width: 300px;
+  border-radius: 100px 10px 100px 100px;
+  transition: all 1s ease-out;
+}
+
+.infocardContainer_button div {
+  width: 100%; 
+  flex-shrink: 1;  
+}
+
+.infocardContainer_button div * {
+  width: 0;
+  height: auto;
+  display: flex;
+  color: white;
+  --flex: inherit;
+  overflow: hidden;  
+  white-space: nowrap;
+  text-overflow: hidden;   
+  transition: all 450ms ease-in;
+  transition-delay: 1s;
+}
+
+.infocardContainer_button:hover div *{  
+  width: 100%;
+  height: auto;
+  display: flex;
+  visibility: visible;
+  transition: all 1s ease-out;
+  transition-delay: 500ms;
+}
+
+.infocardContainer_button #main_button, .infocardContainer_button #main_button img{  
+  width: 100px;
+  height: 200px;
+  flex-shrink: 0;
+  object-fit: cover;
+  padding-right: 10px;
+  border-radius: 100%;  
+} 
+
+.infocardContainer_button #main_button img{  
+  width: 40px;
+  height: 40px;
+  display: float;
+  transition: none;  
+  position: relative;
+  border: 2px solid white;
+  margin: 0 0 0 0; 
+  padding: 0 0 0 0; 
+}
+
+.infocardContainer_button #textbois {
+  position: relative;
+}
+
+.infocardContainer_button #textbois #hotlinks {
+  max-width: 60%;
+  max-height: 30px;  
+  bottom: 5px;
+  display: flex;
+  position:relative;
+  border-radius: 13px;
+  --background-color: white;
+  justify-content: space-between;
+}
+
+.infocardContainer_button #textbois #hotlinks * {  
+  max-width: 30px;
+  border-radius: 25px;
+  --margin: 0 1px 0 1px;
+} 
+
+
+
+@media (max-width: 768px) {  
+  .page{
+    overflow-y: scroll;
+  }
+  .container-fluid{
+      flex-direction: column;        
+  }
+  .container_bienvenida{
+     margin-left: -150px;
+    }     
+  .container_opciones{
+    align-items:start;
+  }
+  .a_titulo{
+    font-size: 30px;
+  }
+  p{
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .page{
+    overflow-y: scroll;
+  }
+  .container-fluid{
+      flex-direction: column;        
+  }
+  .container_bienvenida{
+     margin-left: 10%;
+    }     
+  .container_opciones{
+    margin-left: 30%;
+  }
+  .container_titulo{
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1440px){ 
+  .container_bienvenida{
+     margin-left: 20%;
+    }     
+ .container_opciones{
+    margin-left: 80px;  
+  }
+}
