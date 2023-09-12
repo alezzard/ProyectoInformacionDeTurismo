@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/core/services/token.service';
 
@@ -7,15 +7,25 @@ import { TokenService } from 'src/app/core/services/token.service';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
 
-  constructor(private tokenService: TokenService, private router: Router){};
-
+  
+  constructor(private tokenService: TokenService, private router: Router){}ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+   
+  
   logout():void {
     this.tokenService.logOut();
     this.router.navigate(['/login']);
   }
 
   showBtn: boolean = false;
+  roles! : string;
+  isAdmin : boolean = false;
+
+  OnInit() {
+
+  };
 
 }
