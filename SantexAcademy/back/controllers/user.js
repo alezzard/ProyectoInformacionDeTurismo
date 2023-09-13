@@ -12,7 +12,7 @@ const createUser = async (req, res) => {
 const getAll = async (req,res,) =>{
     try{
         const usersFound = await userService.getAll();
-        if(!usersFound) {
+        if(!usersFound || usersFound.length == 0) {
             res.status(404).json({action: 'getAll', error: 'Users Not Found'});
         }else{
             res.json(usersFound);
