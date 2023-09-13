@@ -49,7 +49,7 @@
       <div class="col-sm-6">
           <div class="container_opciones">
             
-          <div *ngIf="showBtn">
+         <div *ngIf="isAdmin"> 
               <!--    EDITAR PREGUNTAS    -->
             <div class="infocardContainer_button">
               <div id="main_button">
@@ -72,14 +72,15 @@
           </div>
 
             <!--  ENCUESTAS    -->
-            <div class="infocardContainer_button">
+            <div class="infocardContainer_button" (click)="navigateEncuesta()">
               <div id="main_button">
                 <img src="../../../../assets/img/question.png" alt="Encuesta">
               </div>
               <div id="textbois">
-                <a class="a_button" href="#" target="_blank" style="color: black;">Encuestas</a>    
+                <a class="a_button" href="encuesta" style="color: black;">Encuestas</a>    
                 </div>  
             </div> 
+            
 
           <!--  UBICACION    -->
             <div class="infocardContainer_button">
@@ -92,12 +93,12 @@
             </div>
 
           <!--  CERRAR SESION    -->
-            <div class="infocardContainer_button">
+            <div class="infocardContainer_button" (click)="logout()">
               <div id="main_button">
                 <img src="../../../../assets/img/icono_salir1.png" alt="Cerrar Sesión">
               </div>
               <div id="textbois">
-                <a class="a_button" href="#" target="_blank" style="color: black;">Cerrar Sesión</a>    
+                <a class="a_button" href="login" style="color: black;">Cerrar Sesión</a>    
               </div>            
             </div> 
         </div>

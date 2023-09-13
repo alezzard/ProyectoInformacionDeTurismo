@@ -10,22 +10,24 @@ import { TokenService } from 'src/app/core/services/token.service';
 export class HomePageComponent implements OnInit {
 
   
-  constructor(private tokenService: TokenService, private router: Router){}ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  constructor(private tokenService: TokenService, private router: Router){
   }
-   
+  isAdmin : boolean = false;
+
+  ngOnInit(): void {
+    if (this.tokenService.getAuthorities() == 'Admin'){
+      this.isAdmin = true;
+    }
+  };
   
   logout():void {
     this.tokenService.logOut();
     this.router.navigate(['/login']);
   }
-
-  showBtn: boolean = false;
-  roles! : string;
-  isAdmin : boolean = false;
-
-  OnInit() {
-
-  };
+  
+  navigateEncuesta():void {
+    this.router.navigate(['/encuesta']);
+  }
+  
 
 }

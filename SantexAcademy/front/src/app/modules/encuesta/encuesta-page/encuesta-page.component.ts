@@ -58,4 +58,10 @@ export class EncuestaPageComponent {
     this.router.navigate(['/encuesta/newQuestion'])
   }
 
+  ngOnInit(): void {
+    if (this.tokenService.getAuthorities() == 'Admin'){
+      this.isAdmin = true;
+    }
+  };
+
 }

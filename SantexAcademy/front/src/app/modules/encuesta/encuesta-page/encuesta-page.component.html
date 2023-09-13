@@ -18,14 +18,16 @@
                         <mat-icon>search</mat-icon>
                         <span>Buscar Encuesta</span>
                     </button>
-                    <button mat-menu-item (click)="newQuestion()">
+                    <div *ngIf="isAdmin" class="new-question">
+                     <button mat-menu-item (click)="newQuestion()">
                         <mat-icon>
                         <span class="material-symbols-outlined">
                             settings_b_roll
                             </span>
                         </mat-icon>
                         <span>Crear Preguntas</span>
-                    </button>
+                     </button>
+                    </div>
                 </mat-menu>
                 <span class="example-spacer">
                     <span class="container-subtitle">
@@ -36,7 +38,9 @@
                     <mat-icon>undo</mat-icon>
                 </button>
                 <button class="button-toolbar" mat-icon-button (click)="logout()">
-                    <img src="../../../../assets/img/logout.png">
+                    <mat-icon class="material-symbols-outlined">
+                        power_settings_new 
+                    </mat-icon>
                 </button>
             </mat-toolbar>
         </div>
