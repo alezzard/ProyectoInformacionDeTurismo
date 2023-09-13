@@ -1,5 +1,5 @@
 /* const { Op } = require("sequelize"); */
-const { Tipe_Question } = require("../models");
+const { Type_Question } = require("../models");
 
 const createType_Question = async (type_question) => {
     try {
