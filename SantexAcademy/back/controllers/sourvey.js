@@ -12,7 +12,7 @@ const createSurvey = async (req, res) => {
 const getAll = async (req,res,) =>{
     try{
         const surveysFound = await surveyService.getAll();
-        if(!surveysFound) {
+        if(!surveysFound || surveysFound.length == 0) {
             res.status(404).json({action: 'getAll', error: 'Surveys Not Found'});
         }else{
             res.json(surveysFound);

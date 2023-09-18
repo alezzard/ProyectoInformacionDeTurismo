@@ -1,8 +1,8 @@
 const { type_questionService } = require("../services")
 
-const createTipe_Question = async (req, res) => {
+const createType_Question = async (req, res) => {
     try{
-        const newTipe_Question = await type_questionService.createTipe_Question(req.body);
+        const newTipe_Question = await type_questionService.createType_Question(req.body);
         res.status(201).json(newTipe_Question);
     }catch(err){
         res.status(500).json({action: 'createTipe_Question', error: err.message});
@@ -22,9 +22,10 @@ const getAll = async (req,res,) =>{
     }
 };
 
-const getTipe_Question = async (req,res,) =>{
+const getType_Question = async (req,res,) =>{
+    const tipe_questionId = req.params.tipe_questionId;
     try{
-        const tipe_questionFound = await type_questionService.getTipe_Question(req.params.tipe_questionId);
+        const tipe_questionFound = await type_questionService.getType_Question(tipe_questionId);
         if(!tipe_questionFound) {
             res.status(404).json({action: 'getTipe_Question', error: 'Tipe_Question Not Found'});
         }else{
@@ -35,7 +36,7 @@ const getTipe_Question = async (req,res,) =>{
     }
 };
 
-const putTipe_Question = async (req,res,) =>{
+const putType_Question = async (req,res,) =>{
     const tipe_questionId = req.params.tipe_questionId;
     const tipe_question = req.body;
     
@@ -43,7 +44,7 @@ const putTipe_Question = async (req,res,) =>{
         if(!tipe_questionId ) {
             res.status(404).json({action: 'updateTipe_Question', error: 'Tipe_Question Not Found'});
         }else{
-            const updatedTipe_Question = await type_questionService.putTipe_Question(tipe_questionId, tipe_question); 
+            const updatedTipe_Question = await type_questionService.putType_Question(tipe_questionId, tipe_question); 
             res.json(updatedTipe_Question);
         }
     }catch(err){
@@ -53,9 +54,10 @@ const putTipe_Question = async (req,res,) =>{
 };
 
 
-const deleteTipe_Question = async (req,res,) =>{
+const deleteType_Question = async (req,res,) =>{
+    const tipe_questionId = req.params.tipe_questionId;
     try{
-        const tipe_question = await type_questionService.deleteTipe_Question(req.params.tipe_questionId);
+        const tipe_question = await type_questionService.deleteType_Question(tipe_questionId);
         if(!tipe_question) {
             res.status(404).json({action: 'deleteTipe_Question', error: 'Tipe_Question Not Found'});
         }else{
@@ -66,4 +68,4 @@ const deleteTipe_Question = async (req,res,) =>{
     }
 };
 
-module.exports = {createTipe_Question, getAll, getTipe_Question, putTipe_Question,  deleteTipe_Question };
+module.exports = {createType_Question, getAll, getType_Question, putType_Question,  deleteType_Question };
