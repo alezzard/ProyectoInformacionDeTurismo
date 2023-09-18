@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { EncuestaPageComponent } from './encuesta-page/encuesta-page.component';
 import { EncuestaRoutingModule } from './encuesta-routing.module';
 import { QuestionComponent } from './question/question.component';
 
 
+
 @NgModule({
   declarations: [
-    QuestionComponent
+    
   ],
   imports: [
     CommonModule,
     EncuestaRoutingModule,
-    EncuestaPageComponent
+    EncuestaPageComponent,
+    QuestionComponent,
+    FormsModule,
   ],
   exports: [
     EncuestaPageComponent,
