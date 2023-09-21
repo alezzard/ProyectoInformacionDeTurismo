@@ -8,6 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Survey } from 'src/app/models/survey';
+import { SQuestionService } from 'src/app/core/services/s-question.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question',
@@ -27,61 +29,64 @@ import { Survey } from 'src/app/models/survey';
 })
 export class QuestionComponent implements OnInit {
 
-
   newQuestion!: FormGroup;
 
-  nameQuestion!: string;
-  questionType!: string;
+  question!: string;
+  description!: string;
   answer!: string;
   questionList: Question[] = [];
-  question!: Question;
+  questionM!: Question;
   survey!: Survey;
   questionCondition!: string;
-  answerRedacte: string = "tu hermana";
 
   questionsType = new FormControl('');
-  questionTypeList: string[] = ['MultipleChoice', 'Redactar'];
+  descriptionList: string[] = ['MultipleChoice', 'Redactar'];
 
-  constructor( private readonly fb: FormBuilder) { }
+  constructor( private readonly fb: FormBuilder, private sQuestion: SQuestionService, private router: Router) { }
 
   ngOnInit(): void {
     this.newQuestion = this.initForm();
+
+    this.sQuestion.lista().subscribe(data => {
+      this.questionList = data;
+    }, err => {
+      alert("No se pudo cargar preguntas")
+    })
   }
-
-  createQuestion(): void {
-    this.nameQuestion = this.newQuestion.get('nameQuestion')?.value;
-    this.questionType = this.newQuestion.get('questionType')?.value;
-    
-    console.log(`La pregunta es ${this.nameQuestion} y es de tipo ${this.questionType}`);
-
-    this.question = new Question(this.nameQuestion, this.questionType, this.answer);
-    this.questionList.push(this.question);
-    this.survey = new Survey(this.questionList); 
-  }
-
-  defineQuestion(questionT: string []): string {
-
-    if (questionT.length === 0){
-      console.error("seleccione una opcion de pregunta");
-      this.questionCondition = "seleccione una opcion de pregunta";
-      
-    } else if (questionT.indexOf("Redactar") > -1 && questionT.indexOf("MultipleChoice") === -1){
-      this.questionCondition = "Redactar"
-    } else if (questionT.indexOf("MultipleChoice") > -1 && questionT.indexOf("Redactar") === -1){
-      this.questionCondition = "MultipleChoice"
-    } else if (questionT.indexOf("MultipleChoice") > -1 && questionT.indexOf("Redactar") >-1) {
-      this.questionCondition = "ambos"
-    }
-    
-    console.log(this.questionCondition);
-    return this.questionCondition;
-  };
    
+  // Crear Preguntas //
+  createQuestion(): void {
+    this.question = this.newQuestion.get('question')?.value;
+    this.description = this.newQuestion.get('description')?.value.toString();
+    /* console.log(`La pregunta es ${this.question} y es de tipo ${this.description}`); */
+    this.questionM = new Question(this.question, this.answer, this.description);
+    this.sQuestion.save(this.questionM).subscribe(
+      data=>{ 
+        alert("Question añadida correctamente");
+        }, err => { alert("Falló");
+           this.router.navigate(['home']);
+            }
+    );
+    /* this.survey = new Survey(this.questionList);  */
+  }
+   
+  // Define Tipo de Pregunta //
+  defineQuestion(): string {
+    this.description = this.newQuestion.get('description')?.value.toString();
+    console.log(this.description); 
+    return this.description;
+  };
+
+  crearOpciones():void{
+    this.answer = this.newQuestion.get('answer')?.value.toString();
+  }
+   
+
   initForm(): FormGroup {
     return this.fb.group({
-      nameQuestion: ['', [Validators.required]],
-      questionType: ['', [Validators.required]],
-      answerRedacte: ['', [Validators.required]]
+      question: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      answer: ['', [Validators.required]]
     })
   };
 

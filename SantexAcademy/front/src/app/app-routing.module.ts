@@ -23,6 +23,11 @@ const routes: Routes = [
     canMatch: [authGuard],
   },
   {
+    path: 'adminServer',
+    loadChildren: () => import('./modules/admin-server/admin-server.module').then(m => m.AdminServerModule),
+    canMatch: [authGuard],
+  },
+  {
     path: '**',
     loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule),
   },

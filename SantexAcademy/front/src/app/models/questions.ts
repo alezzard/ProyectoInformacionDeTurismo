@@ -1,12 +1,12 @@
 export class Question {
     id?: number;
-    nameQuestion: string;
-    questionType: string;
+    question: string;
+    description: string;
     answer: string;
 
-    constructor(nameQuestion: string, questionType: string, answer: string) {
-        this.nameQuestion = nameQuestion;
-        this.questionType = questionType;
+    constructor(question: string,  answer: string, description: string) {
+        this.question = question;
+        this.description = description;
         this.answer = answer;
     };
 

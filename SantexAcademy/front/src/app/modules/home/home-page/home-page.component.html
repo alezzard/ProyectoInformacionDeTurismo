@@ -50,13 +50,13 @@
           <div class="container_opciones">
             
          <div *ngIf="isAdmin"> 
-              <!--    EDITAR PREGUNTAS    -->
-            <div class="infocardContainer_button">
+              <!--    Admin Server    -->
+            <div class="infocardContainer_button" routerLink="/adminServer">
               <div id="main_button">
                 <img src="../../../../assets/img/icono_enc.png" alt="Editar Preguntas">
               </div>
               <div id="textbois">
-                <a class="a_button" href="#" target="_blank" style="color: black;">Editar Preguntas</a>    
+                <a class="a_button" href="adminServer" style="color: black;">Adminstrator Server</a>    
               </div>  
             </div> 
 
@@ -72,9 +72,9 @@
           </div>
 
             <!--  ENCUESTAS    -->
-            <div class="infocardContainer_button" (click)="navigateEncuesta()">
+            <div class="infocardContainer_button" >
               <div id="main_button">
-                <img src="../../../../assets/img/question.png" alt="Encuesta">
+                <img src="../../../../assets/img/question.png" routerLink="/encuesta" alt="Encuesta">
               </div>
               <div id="textbois">
                 <a class="a_button" href="encuesta" style="color: black;">Encuestas</a>    

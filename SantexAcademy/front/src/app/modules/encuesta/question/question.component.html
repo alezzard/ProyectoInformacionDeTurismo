@@ -4,22 +4,22 @@
  <mat-form-field>
     <mat-label>Redacte la pregunta</mat-label>
     <input 
-         type="nameQuestion" 
-         name="nameQuestion" 
-         placeholder="nameQuestion" 
+         type="question" 
+         name="question" 
+         placeholder="question" 
          class="form-control form-control-lg" 
-         formControlName="nameQuestion"
+         formControlName="question"
          required
          matInput>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Tipos de Preguntas</mat-label>
-    <mat-select formControlName="questionType" (ngModelChange)="defineQuestion($event)" multiple>
+    <mat-select formControlName="description" (ngModelChange)="defineQuestion()" multiple>
       <mat-option 
-         *ngFor="let qt of questionTypeList" 
-         formControlName="questionType" 
-         name="questionType" 
+         *ngFor="let qt of descriptionList" 
+         formControlName="description" 
+         name="description" 
          ngDefaultControl 
          class="form-control form-control-lg" 
          [value]="qt"
@@ -29,21 +29,21 @@
     </mat-select>
   </mat-form-field>
 
-  <div *ngIf="questionCondition == 'MultipleChoice' || questionCondition == 'ambos'">
+  <div *ngIf="description == 'MultipleChoice' || description == 'MultipleChoice,Redactar'">
     <section class="example-section">
-     <mat-checkbox class="example-margin" formControlName="answerRedacte">Opcion 1</mat-checkbox>
-     <mat-checkbox class="example-margin" formControlName="answerRedacte">Opcion 2</mat-checkbox>
+     <mat-checkbox class="example-margin" formControlName="answer">Opcion 1</mat-checkbox>
+     <mat-checkbox class="example-margin" formControlName="answer">Opcion 2</mat-checkbox>
     </section>
    </div>
 
-  <mat-form-field *ngIf="questionCondition == 'Redactar' || questionCondition == 'ambos'">
+  <mat-form-field *ngIf="description == 'Redactar' || description == 'MultipleChoice,Redactar'">
     <mat-label>Redacte su respuesta</mat-label>
     <input 
-         type="answerRedacte" 
-         name="answerRedacte"
-         placeholder="answerRedacte" 
+         type="answer" 
+         name="answer"
+         placeholder="answer" 
          class="form-control form-control-lg" 
-         formControlName="answerRedacte"
+         formControlName="answer"
          required
          matInput>
   </mat-form-field>
@@ -55,8 +55,8 @@
 
 
   <div *ngFor="let r of questionList" class="form-control">
-    <h1>{{r.nameQuestion}}</h1>
-    <h1>{{r.questionType}}</h1>
+    <h1>{{r.question}}</h1>
+    <h1>{{r.description}}</h1>
   </div>
 </form>
 </div>
