@@ -30,44 +30,55 @@ import { Router } from '@angular/router';
 export class QuestionComponent implements OnInit {
 
   newQuestion!: FormGroup;
-
-  question!: string;
-  description!: string;
-  answer!: string;
   questionList: Question[] = [];
   questionM!: Question;
-  survey!: Survey;
+  question!: string;
+  description!: string;
   questionCondition!: string;
-
-  questionsType = new FormControl('');
   descriptionList: string[] = ['MultipleChoice', 'Redactar'];
+  
+  optionAnswer!: string;
+
+  answer!: string;
+  listAnswer: string[] = [];
+  
+  survey!: Survey;
+  
+
+ 
 
   constructor( private readonly fb: FormBuilder, private sQuestion: SQuestionService, private router: Router) { }
 
   ngOnInit(): void {
     this.newQuestion = this.initForm();
+  }
 
-    this.sQuestion.lista().subscribe(data => {
-      this.questionList = data;
-    }, err => {
-      alert("No se pudo cargar preguntas")
-    })
+  agregarInput() {
+    this.optionAnswer = this.newQuestion.get('optionAnswer')?.value;
+    this.listAnswer.push(this.optionAnswer);
+    console.log(this.listAnswer);
+  }
+
+  guardarValores() {
+    
+    //Aquí puedes realizar cualquier acción con los valores introducidos.
   }
    
   // Crear Preguntas //
   createQuestion(): void {
     this.question = this.newQuestion.get('question')?.value;
     this.description = this.newQuestion.get('description')?.value.toString();
-    /* console.log(`La pregunta es ${this.question} y es de tipo ${this.description}`); */
-    this.questionM = new Question(this.question, this.answer, this.description);
+    this.optionAnswer = this.listAnswer.toString();
+    this.questionM = new Question(this.question, this.optionAnswer, this.description);
     this.sQuestion.save(this.questionM).subscribe(
       data=>{ 
         alert("Question añadida correctamente");
         }, err => { alert("Falló");
-           this.router.navigate(['home']);
+           /* this.router.navigate(['home']); */
             }
     );
-    /* this.survey = new Survey(this.questionList);  */
+
+    this.optionAnswer = "";
   }
    
   // Define Tipo de Pregunta //
@@ -77,18 +88,19 @@ export class QuestionComponent implements OnInit {
     return this.description;
   };
 
-  crearOpciones():void{
-    this.answer = this.newQuestion.get('answer')?.value.toString();
-  }
-   
+
+
 
   initForm(): FormGroup {
     return this.fb.group({
       question: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      answer: ['', [Validators.required]]
+      optionAnswer: ['', [Validators.required]],
+      answer: ['']
     })
   };
+
+  
 
 
 

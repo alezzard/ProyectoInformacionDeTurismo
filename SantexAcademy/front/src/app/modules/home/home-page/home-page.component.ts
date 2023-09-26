@@ -24,10 +24,7 @@ export class HomePageComponent implements OnInit {
     this.tokenService.logOut();
     this.router.navigate(['/login']);
   }
-  
-  navigateEncuesta():void {
-    this.router.navigate(['/encuesta']);
-  }
+
   
 
 }

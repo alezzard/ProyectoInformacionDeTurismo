@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TokenService } from 'src/app/core/services/token.service';
 import { Router } from '@angular/router';
+import { Question } from 'src/app/models/questions';
+import { SQuestionService } from 'src/app/core/services/s-question.service';
 
 @Component({
   selector: 'app-encuesta-page',
@@ -32,10 +34,13 @@ import { Router } from '@angular/router';
 })
 export class EncuestaPageComponent {
 
-  constructor(private tokenService: TokenService, private router: Router){};
+  constructor(private tokenService: TokenService, private router: Router, private sQuestion: SQuestionService){};
   
   showE: boolean = false;
   isAdmin: boolean = false;
+
+  questionsList!: Question[];
+  optionsAnswerList: string[][] = [];
   
   logout():void {
     this.tokenService.logOut();
@@ -62,6 +67,14 @@ export class EncuestaPageComponent {
     if (this.tokenService.getAuthorities() == 'Admin'){
       this.isAdmin = true;
     }
+
+    this.sQuestion.lista().subscribe(data => {
+      this.questionsList = data;
+      alert("Se cargaron las preguntas")
+    }, err => {
+      alert("No se pudo cargar preguntas")
+    });
+
   };
 
 }

@@ -1,13 +1,13 @@
 export class Question {
     id?: number;
     question: string;
+    optionAnswer: string;
     description: string;
-    answer: string;
 
-    constructor(question: string,  answer: string, description: string) {
+    constructor(question: string, optionAnswer: string, description: string) {
         this.question = question;
         this.description = description;
-        this.answer = answer;
-    };
+        this.optionAnswer = optionAnswer;
+    }
 
 }

@@ -19,14 +19,14 @@
                         <span>Buscar Encuesta</span>
                     </button>
                     <div *ngIf="isAdmin" class="new-question">
-                     <button mat-menu-item (click)="newQuestion()">
-                        <mat-icon>
-                        <span class="material-symbols-outlined">
-                            settings_b_roll
-                            </span>
-                        </mat-icon>
-                        <span>Crear Preguntas</span>
-                     </button>
+                        <button mat-menu-item (click)="newQuestion()">
+                            <mat-icon>
+                                <span class="material-symbols-outlined">
+                                    settings_b_roll
+                                </span>
+                            </mat-icon>
+                            <span>Crear Preguntas</span>
+                        </button>
                     </div>
                 </mat-menu>
                 <span class="example-spacer">
@@ -39,7 +39,7 @@
                 </button>
                 <button class="button-toolbar" mat-icon-button (click)="logout()">
                     <mat-icon class="material-symbols-outlined">
-                        power_settings_new 
+                        power_settings_new
                     </mat-icon>
                 </button>
             </mat-toolbar>
@@ -66,12 +66,27 @@
                         <mat-option value="masulino">Masculino</mat-option>
                         <mat-option value="femenino">Femenino</mat-option>
                     </mat-select>
-                </mat-form-field>      
+                </mat-form-field>
             </div>
-            <div class="container-procedencia">
-             <h3>Procedencia</h3>
-             <mat-checkbox>Córdoba Capital</mat-checkbox>
+
+
+            <div *ngFor="let r of questionsList" class="form-control">
+                <div class="container-question">
+                    <h1>{{r.question}}</h1>
+                    <h1>{{r.description}}</h1>
+                    
+                    <div *ngIf="r.description == 'MultipleChoice' || r.description == 'MultipleChoice,Redactar'">
+                    <div *ngFor="let option of r.optionAnswer.split(',')">
+                        <mat-checkbox class="example-margin">{{option}}</mat-checkbox>
+                    </div>
+                    </div>
+
+                    <div *ngIf="r.description == 'Redactar' || r.description == 'MultipleChoice,Redactar'">
+                        <input type="text">
+                    </div>
+                </div>
             </div>
+
             <button (click)="saveEncuesta()"> Guardar </button>
         </div>
     </div>
