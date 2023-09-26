@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FormBuilder, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule} from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -33,19 +33,22 @@ import { SQuestionService } from 'src/app/core/services/s-question.service';
   ],
 })
 export class EncuestaPageComponent {
-
-  constructor(private tokenService: TokenService, private router: Router, private sQuestion: SQuestionService){};
   
+  newSurvey!: FormGroup;
   showE: boolean = false;
   isAdmin: boolean = false;
 
   questionsList!: Question[];
   optionsAnswerList: string[][] = [];
+
+  constructor(private tokenService: TokenService, private router: Router, private sQuestion: SQuestionService, private readonly fb: FormBuilder){};
   
   logout():void {
     this.tokenService.logOut();
     this.router.navigate(['/login']);
   }
+
+  createSurvey():void {};
 
   backHome():void {
     this.router.navigate(['/home']);
@@ -74,7 +77,12 @@ export class EncuestaPageComponent {
     }, err => {
       alert("No se pudo cargar preguntas")
     });
+  };
 
+  initForm(): FormGroup {
+    return this.fb.group({
+      
+    });
   };
 
 }
