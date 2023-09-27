@@ -53,9 +53,10 @@
                 desarrollar planes estratégicos que permitirán hacer de nuestra localidad el mejor lugar para sus
                 vacaciones.
                 Cabe aclarar que los datos son confidenciales y anónimos.
-
             </p>
+            <!-- <form (ngSubmit)="createSurvey()" class="formulario" [formGroup]="newSurvey" novalidate> -->
             <div class="container-datos-personales">
+                
                 <mat-form-field class="container-question">
                     <mat-label>Edad</mat-label>
                     <input matInput>
@@ -88,6 +89,7 @@
             </div>
 
             <button (click)="saveEncuesta()"> Guardar </button>
+        <!-- </form> -->
         </div>
     </div>
 </div>

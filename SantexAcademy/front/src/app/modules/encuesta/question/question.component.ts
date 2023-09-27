@@ -43,9 +43,6 @@ export class QuestionComponent implements OnInit {
   listAnswer: string[] = [];
   
   survey!: Survey;
-  
-
- 
 
   constructor( private readonly fb: FormBuilder, private sQuestion: SQuestionService, private router: Router) { }
 
