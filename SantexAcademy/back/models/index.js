@@ -38,13 +38,15 @@ module.exports = db;*/
 const User = require("./user");
 const Role = require("./role");
 const Survey = require("./survey");
-const Question_Answer = require("./question_answer");
+const Question = require("./question");
+const Answer = require("./answer");
 const Type_Question = require("./type_question");
 
 module.exports = { 
   User, 
   Role, 
   Survey, 
-  Question_Answer,
+  Question,
+  Answer,
   Type_Question
 };

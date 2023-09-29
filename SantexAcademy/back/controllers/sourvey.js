@@ -1,8 +1,9 @@
 const { surveyService } = require("../services")
 
 const createSurvey = async (req, res) => {
+    const survey = req.body;
     try{
-        const newSurvey = await surveyService.createSurvey(req.body);
+        const newSurvey = await surveyService.createSurvey(survey);
         res.status(201).json(newSurvey);
     }catch(err){
         res.status(500).json({action: 'createSurvey', error: err.message});
@@ -23,8 +24,8 @@ const getAll = async (req,res,) =>{
 };
 
 const getSurvey = async (req,res,) =>{
+    const surveyId = req.params.surveyId;
     try{
-        const surveyId = req.params.surveyId;
         const surveyFound = await surveyService.getSurvey(surveyId);
         if(!surveyFound) {
             res.status(404).json({action: 'getSurvey', error: 'Survey Not Found'});
@@ -56,8 +57,8 @@ const putSurvey = async (req,res,) =>{
 
 
 const deleteSurvey = async (req,res,) =>{
+    const surveyId = req.params.surveyId;
     try{
-        const surveyId = req.params.surveyId;
         const udeletedSurvey = await surveyService.deleteSurvey(surveyId);
         if(!udeletedSurvey) {
             res.status(404).json({action: 'deleteSurvey', error: 'Survey Not Found'});
