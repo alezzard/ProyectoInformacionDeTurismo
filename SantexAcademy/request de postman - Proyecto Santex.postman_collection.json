@@ -403,10 +403,142 @@
 			]
 		},
 		{
-			"name": "Question_Answer",
+			"name": "Question",
 			"item": [
 				{
-					"name": "createQuestion_Answer",
+					"name": "createQuestion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"question\": \"pregunta generica\",\n    \"description\":\"encuestas\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/question/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"question",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/survey/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"survey",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getQuestion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/survey/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"survey",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putQuestion",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"encuestas\",\n    \"description\":\"modificado--..\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/survey/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"survey",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteQuestion",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"ale.godoy2@email.com\",\n    \"password\":\"aleGodoy1234\",\n    \"firstName\":\"Ale\",\n    \"lastName\":\"Godoy\",\n    \"description\":\"descripción del usuario\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/question_answer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"question_answer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Answer",
+			"item": [
+				{
+					"name": "createAnswer",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -455,7 +587,7 @@
 					"response": []
 				},
 				{
-					"name": "getQuestion_Answer",
+					"name": "getAnswer",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -475,36 +607,7 @@
 					"response": []
 				},
 				{
-					"name": "putQuestion_Answer",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\":\"encuestas\",\n    \"description\":\"modificado--..\"\n    \n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/survey/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"survey",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "deleteQuestion_Answer",
+					"name": "deleteAnswer",
 					"request": {
 						"method": "DELETE",
 						"header": [],
