@@ -2,8 +2,9 @@ const { roleService } = require("../services")
 
 
 const createRole = async (req, res) => {
+    const role = req.body;
     try{
-        const newRole = await roleService.createRole(req.body);
+        const newRole = await roleService.createRole(role);
         res.json(newRole);
     }catch(err){
         res.status(500).json({action: 'createRole', error: err.message});
@@ -23,8 +24,9 @@ const getAll = async (req,res,) =>{
 };
 
 const getRole = async (req,res,) =>{
+    const roleId = req.params.roleId;
     try{
-        const role = await roleService.getRole(req.params.roleId);
+        const role = await roleService.getRole(roleId);
         if(!role) {
             res.status(404).json({action: 'getRole', error: 'Role Not Found'});
         }else{
@@ -50,8 +52,9 @@ const getRole = async (req,res,) =>{
     }
 };
 const deleteRole = async (req,res,) =>{
+    const roleId = req.params.roleId;
     try{
-        const deletedRole = await roleService.deleteRole(req.params.roleId);
+        const deletedRole = await roleService.deleteRole(roleId);
         if(!deletedRole) {
             res.status(404).json({action: 'deleteRole', error: 'Role Not Found'});
         }else{

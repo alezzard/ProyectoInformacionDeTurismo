@@ -1,8 +1,10 @@
 const { userService } = require("../services")
 
 const createUser = async (req, res) => {
+    const user = req.body;
+    
     try{
-        const newUser = await userService.createUser(req.body);
+        const newUser = await userService.createUser(user);
         res.status(201).json(newUser);
     }catch(err){
         res.status(500).json({action: 'createUser', error: err.message});
@@ -23,8 +25,10 @@ const getAll = async (req,res,) =>{
 };
 
 const getUser = async (req,res,) =>{
+    const userId = req.params.userId;
+    
     try{
-        const userFound = await userService.getUser(req.params.userId);
+        const userFound = await userService.getUser(userId);
         if(!userFound) {
             res.status(404).json({action: 'getUser', error: 'User Not Found'});
         }else{
@@ -54,8 +58,10 @@ const putUser = async (req,res,) =>{
 
 
 const deleteUser = async (req,res,) =>{
+    const userId = req.params.userId;
+    
     try{
-        const user = await userService.deleteUser(req.params.userId);
+        const user = await userService.deleteUser(userId);
         if(!user) {
             res.status(404).json({action: 'deleteUser', error: 'User Not Found'});
         }else{
