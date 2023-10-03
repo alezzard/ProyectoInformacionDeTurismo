@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { EncuestaPageComponent } from './encuesta-page/encuesta-page.component';
 import { EncuestaRoutingModule } from './encuesta-routing.module';
-import { QuestionComponent } from './question/question.component';
+import { QuestionComponent } from '../admin-server/newQuestion/question.component';
 
 
 
