@@ -95,3 +95,30 @@
 .toolbar {
   background: none;
 }
+
+.btn{
+  display: flex;  
+}
+
+.bnt_cancelar, .bnt_guardar{    
+  background-color:rgba(0,159,255,1);
+  border: none;
+  color: white;
+  padding: 12px 28px;
+  text-align: center;
+  text-decoration: none;  
+  font-size: 15px;
+  border-radius: 12px;
+  transition-duration: 0.4s;
+
+}
+
+.container_btn{
+  display: flex;
+  justify-content:space-around;
+}
+
+.bnt_guardar:hover, .bnt_cancelar:hover{  
+  background-color: white;
+  color: black; 
+}
