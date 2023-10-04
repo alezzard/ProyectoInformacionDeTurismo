@@ -7,11 +7,11 @@ import { AdminServerRoutingModule } from './admin-server-routing.module';
 
 @NgModule({
   declarations: [
-    AdminServerPageComponent
   ],
   imports: [
     CommonModule,
-    AdminServerRoutingModule
+    AdminServerRoutingModule,
+    AdminServerPageComponent
   ],
   exports: [
     AdminServerPageComponent
