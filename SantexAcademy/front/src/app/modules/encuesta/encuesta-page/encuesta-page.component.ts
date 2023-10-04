@@ -40,7 +40,7 @@ export class EncuestaPageComponent {
   showE: boolean = false;
   answerSelect!: String;
   prueba!: String;
-  /* isAdmin: boolean = false; */
+  idQuestion!: number;
 
   questionsList!: Question[];
   optionsAnswerList: string[][] = [];
@@ -75,8 +75,13 @@ export class EncuestaPageComponent {
     this.prueba = option;
     console.log(this.prueba);
     console.log('valor seleccionado para:' + option + ':', answer);
-    
   };
+
+  verIdQuestion():void {
+    this.questionsList.forEach((i, id)=>{
+      console.log('Id: ' + i.id + ' indice: ' + id);
+    })
+  }
 
 
   ngOnInit(): void {
