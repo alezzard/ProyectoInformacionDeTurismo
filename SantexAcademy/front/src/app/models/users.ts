@@ -7,12 +7,12 @@ export class Users {
     lastName!: string;
     roleId!: number;
 
-    constructor(firstName: string, lastname: string, email: string, password: string, roleId: number) {
+    constructor(firstName: string, lastname: string, email: string, password: string) {
         this.firstName = firstName;
         this.lastName = lastname;
         this.email = email;
         this.password = password;
-        this.roleId = roleId;
+        
     }
 
    

@@ -70,8 +70,9 @@ export class QuestionComponent implements OnInit {
     this.sQuestion.save(this.questionM).subscribe(
       data=>{ 
         alert("Question añadida correctamente");
+         this.router.navigate(['encuesta']); 
         }, err => { alert("Falló");
-           /* this.router.navigate(['home']); */
+           
             }
     );
 

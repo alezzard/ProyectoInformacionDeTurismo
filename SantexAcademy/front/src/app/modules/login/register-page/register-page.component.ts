@@ -21,7 +21,7 @@ export class RegisterPageComponent {
   constructor(private authService: AuthService, private router: Router){};
 
   registerUser():void {
-    this.users = new Users(this.firstName, this.lastname, this.email, this.password, this.roleId);
+    this.users = new Users(this.firstName, this.lastname, this.email, this.password);
     this.authService.new(this.users).subscribe(user => {
       user.firstName = this.users.firstName;
       user.lastName = this.users.lastName;
