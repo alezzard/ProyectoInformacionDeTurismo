@@ -1,7 +1,65 @@
-<p>admin-server-page works!</p>
+<!-- <p>admin-server-page works!</p>
 
 <div class="new-question">
     <button (click)="newQuestion()" > 
         Crear Preguntas
     </button>
-</div>
+</div> -->
+
+<head>    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">   
+  </head> 
+  
+  <body>
+      <!-- REDES -->
+    <div class="menu_admin">
+        <div class="li-social-icons">
+            <ul class="social-icons">
+                 <li><a href="https://www.instagram.com/minaclaveroofc/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://twitter.com/MinaClaveroOfc" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="https://www.facebook.com/MinaClaveroOK/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+            </ul>  
+        </div> 
+          <!-- MENU  -->
+    <h1>Municipalidad de Mina Clavero</h1>
+    <p>Valle de Traslasierra - Provincia de Córdoba</p>
+        <nav class="nav">
+            <input id="menu" type="checkbox">
+            <label for="menu">Menu</label>
+                <ul class="menu">
+                    <li>
+                        <a>
+                        <span class="new-question" style="left: -50%;">Crear Preguntas</span>                
+                        <img src="../../../../assets/img/pregunta.png" alt=""(click)="newQuestion()">  
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#0">
+                        <span>Dashboard</span>                
+                        <img src="../../../../assets/img/analisis.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#0">
+                        <span>Usuarios</span>                
+                        <img src="../../../../assets/img/grupo.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#0">
+                        <span>Contacto</span>                
+                        <img src="../../../../assets/img/contact.png" alt="">
+                        </a>
+                    </li>
+                </ul>
+        </nav>
+        <div class="footerSalir">
+             <!-- Botón para volver atrás  -->
+             <!-- <button type="button" routerLink="/home" class="button-toolbar" (click)="backHome()" mat-icon-button>
+                <mat-icon>undo</mat-icon>
+            </button> -->
+        </div>       
+    </div>
+  </body>

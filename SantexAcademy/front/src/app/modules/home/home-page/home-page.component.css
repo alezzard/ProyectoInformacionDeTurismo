@@ -179,7 +179,7 @@ p{
   display: float;
   transition: none;
   position: relative; 
-  border: 2px solid white;
+  border: 2px solid black;
   margin: 0 0 0 0; padding: 0 0 0 0;
 } 
 
@@ -280,7 +280,7 @@ p{
   display: float;
   transition: none;  
   position: relative;
-  border: 2px solid white;
+  border: 2px solid black;
   margin: 0 0 0 0; 
   padding: 0 0 0 0; 
 }

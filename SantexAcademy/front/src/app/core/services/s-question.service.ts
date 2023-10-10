@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class SQuestionService {
 
-  URL = environment.API_URL + 'question_answer/';
+  URL = environment.API_URL + 'question/';
 
   constructor(private httpClient: HttpClient) { }
   

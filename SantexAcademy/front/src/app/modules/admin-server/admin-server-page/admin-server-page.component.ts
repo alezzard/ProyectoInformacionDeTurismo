@@ -7,9 +7,9 @@ import { Router, RouterLink } from '@angular/router';
   styleUrls: ['./admin-server-page.component.css'],
   standalone: true,
   imports: [
-
-  ], 
     
+  ], 
+ 
 
 })
 export class AdminServerPageComponent implements OnInit {
@@ -22,5 +22,7 @@ export class AdminServerPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
 
 }
