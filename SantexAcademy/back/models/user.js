@@ -30,14 +30,15 @@ module.exports = (sequelize, DataTypes) => {
 };*/
 
 const { DataTypes } = require("sequelize");
-const { sequelize } = require("../config/db-config");
-const Role = require("./role");
+const { sequelize } = require("../config/database");
+/* const Role = require("./role"); */
 
 const User = sequelize.define("Users",{
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
+        allowNull: false
     },
     email: {
         type: DataTypes.STRING,
@@ -62,6 +63,13 @@ const User = sequelize.define("Users",{
     description: {
         type: DataTypes.STRING,
         allowNull: true
+    },createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE
     },
     /* RoleId: {
       type: DataTypes.INTEGER,

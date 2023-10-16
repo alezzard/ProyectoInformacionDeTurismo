@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
 };*/
 
 const { DataTypes } = require("sequelize");
-const { sequelize } = require("../config/db-config");
+const { sequelize } = require("../config/database");
 
 
 const Role = sequelize.define("Roles",{

@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-
+require('dotenv').config();
 const loggingMiddleware = require("../middleware/logging");
-const { initializeDB } = require("../config/db-config");
+const { initializeDB } = require("../config/database");
 const {
   roleRouter,
   userRouter,
@@ -14,7 +14,7 @@ const {
 require('../models/asociations')
 
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
