@@ -1,5 +1,5 @@
-const { Op } = require("sequelize");
-const { Question } = require("../models");
+const { Op, Sequelize } = require("sequelize");
+const { Question, Answer } = require("../models");
 
 const createQuestion = async (question) => {
   try {
@@ -25,11 +25,30 @@ const getAll = async () => {
 
 const getQuestion = async (questionId) => {
   try {
-    const questionFound = await Question.findByPk(
-      questionId,
-      { include: { all: true } }
-    );
-    return questionFound;
+    // Buscar respuestas agrupadas por valor para la pregunta específica
+    const agregatedAnsewrs = await Answer.findAll({
+      attributes: [
+        'answer',
+        [Sequelize.fn('count', Sequelize.col('answer')), 'countAnswer']
+      ],
+      where: { questionId: questionId}, //filtro por el ID de la pregunta
+      group: ['answer'], //agrupa por el valor de la respuesta
+      order: [ Sequelize.literal('countanswer DESC')]
+    });
+
+    const formattedResponse = {};
+
+    formattedResponse[`pregunta_id_${questionId}`] = {
+      total_respuestas: agregatedAnsewrs.reduce((acc, answer) => acc + answer.get('countanswer'), 0),
+      respuestas: agregatedAnsewrs.map( answer => {
+        return {
+            answer: answer.answer,
+            respuestas: answer.get('countanswer')
+        };
+      })
+    };
+
+    return formattedResponse;
   } catch (err) {
     console.log(
       `Error when fetching Question ${questionId}.\n ${err}`

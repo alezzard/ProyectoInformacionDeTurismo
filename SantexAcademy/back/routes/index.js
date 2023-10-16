@@ -26,7 +26,6 @@ const surveyRouter = require("./survey");
 const authRouter = require("./auth");
 const questionRouter = require("./question");
 const answerRouter = require("./answer");
-const type_questionRouter = require("./type_question");
 
 module.exports = {
   roleRouter,
@@ -35,5 +34,4 @@ module.exports = {
   surveyRouter,
   questionRouter,
   answerRouter,
-  type_questionRouter,
 };

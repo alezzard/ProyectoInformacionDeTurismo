@@ -28,7 +28,7 @@ const { sequelize } = require("../config/db-config");
 
 
 const Role = sequelize.define("Roles",{
-    id: {
+    Id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true

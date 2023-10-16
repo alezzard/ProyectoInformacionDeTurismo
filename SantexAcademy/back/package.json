@@ -8,6 +8,7 @@
     "start": "node ./bin/app",
     "clean": "rimraf ./node_modules",
     "lint-staged": "npx lint-staged",
+    "seed": "node ./config/seed",
     "start:dev": "nodemon ./bin/app",
     "db:create": "./node_modules/.bin/sequelize db:create",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",

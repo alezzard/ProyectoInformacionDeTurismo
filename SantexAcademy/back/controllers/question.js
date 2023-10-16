@@ -2,12 +2,10 @@ const { questionService } = require("../services");
 
 const createQuestion = async (req, res) => {
   const question = req.body;
-  console.log("question: ",question)
   try {
     const newQuestion = await questionService.createQuestion(question);
     res.status(201).json(newQuestion);
   } catch (err) {
-    console.log("rama err")
     res.status(500).json({ action: "createQuestion", error: err.message });
   }
 };
@@ -27,7 +25,7 @@ const getAll = async (req, res) => {
 
 const getQuestion = async (req, res) => {
   try {
-    const questionId = req.params;
+    const questionId = req.params.questionId;
     const questionFound = await questionService.getQuestion(questionId);
     if (!questionFound) {
       res

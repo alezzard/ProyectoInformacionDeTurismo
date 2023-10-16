@@ -40,7 +40,6 @@ const Role = require("./role");
 const Survey = require("./survey");
 const Question = require("./question");
 const Answer = require("./answer");
-const Type_Question = require("./type_question");
 
 module.exports = { 
   User, 
@@ -48,5 +47,4 @@ module.exports = {
   Survey, 
   Question,
   Answer,
-  Type_Question
 };

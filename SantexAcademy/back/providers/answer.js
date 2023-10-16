@@ -1,9 +1,32 @@
 const { Op } = require("sequelize");
 const { Answer } = require("../models");
+const questionProvider = require("../providers/question");
+const userProvider = require("../providers/user");
+const surveyProvider  = require("../providers/survey");
 
-const createAnswer = async (answer) => {
+const createAnswer = async (body) => {
   try {
-    const newAnswer = await Answer.create(answer);
+    //extraigo lo necesario del body
+    const {userId, surveyId, questionId, answer} = body;
+    
+    console.log(`userId: ${userId}, 
+                surveyId: ${surveyId}, 
+                questionId: ${questionId}, 
+                answer: ${answer}.`)
+    //creo la respuesta:
+    const newAnswer = await Answer.create({questionId, answer});
+
+
+    //relaciono la respuesta con las otras entidades:
+
+    //con el usuario:    
+    const userfound = await userProvider.getUser(userId);
+    await userfound.addAnswer(newAnswer);
+
+    //con la encuesta: 
+    const surveyFound = await surveyProvider.getSurvey(surveyId);
+    await surveyFound.addAnswer(newAnswer);
+
     return newAnswer;
   } catch (err) {
     throw err;

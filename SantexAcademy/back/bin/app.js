@@ -9,9 +9,9 @@ const {
   authRouter,
   surveyRouter,
   answerRouter,
-  type_questionRouter,
   questionRouter,
 } = require("../routes");
+require('../models/asociations')
 
 
 const PORT = 3000;
@@ -20,19 +20,19 @@ const app = express();
 
 // Application middlewares
 app.use(express.json()); // parsea a json
-
 app.use(loggingMiddleware);
-
 app.use(cors());
 
+// Rutas
 app.use("/user", userRouter);
 app.use("/role", roleRouter);
 app.use("/survey", surveyRouter);
 app.use("/login", authRouter);
 app.use("/question", questionRouter);
 app.use("/answer", answerRouter);
-app.use("/type_question", type_questionRouter);
 
+
+// Arrancamos el servidor
 app.listen(PORT, async () => {
   await initializeDB();
   console.log(`Server running in port ${PORT}`);
