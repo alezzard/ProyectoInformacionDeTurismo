@@ -1,0 +1,5 @@
+SantexAcademy/back/node_modules
+SantexAcademy/back/config/database.js
+SantexAcademy/back/database/.dev-database.sqlite
+SantexAcademy/back/seeds.json
+SantexAcademy/back/sequelize-meta.json

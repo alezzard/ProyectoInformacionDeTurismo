@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-require('dotenv').config();
+require("dotenv").config();
 const loggingMiddleware = require("../middleware/logging");
-const { initializeDB } = require("../config/database");
+const db = require("../models/index");
 const {
   roleRouter,
   userRouter,
@@ -11,8 +11,6 @@ const {
   answerRouter,
   questionRouter,
 } = require("../routes");
-require('../models/asociations')
-
 
 const PORT = process.env.PORT || 3000;
 
@@ -31,9 +29,10 @@ app.use("/login", authRouter);
 app.use("/question", questionRouter);
 app.use("/answer", answerRouter);
 
-
 // Arrancamos el servidor
 app.listen(PORT, async () => {
-  await initializeDB();
+  /* await db.sequelize.authenticate(); */
+  await db.sequelize.sync();
+
   console.log(`Server running in port ${PORT}`);
 });

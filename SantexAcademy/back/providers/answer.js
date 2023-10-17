@@ -1,6 +1,5 @@
 const { Op } = require("sequelize");
 const { Answer } = require("../models");
-const questionProvider = require("../providers/question");
 const userProvider = require("../providers/user");
 const surveyProvider  = require("../providers/survey");
 

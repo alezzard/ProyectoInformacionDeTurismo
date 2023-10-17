@@ -1,32 +1,34 @@
-/*// eslint-disable global-require 
+// eslint-disable global-require 
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
-
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-// eslint-disable-next-line import/no-dynamic-require
-const config = require(`${__dirname}/../config/config.js`)[env];
+//configuración
+const config = require('../config/db-config');
+//declaración del objeto db
 const db = {};
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+const envConfig = config[process.env.ENVIRONMENT || 'development'];
+const sequelize = new Sequelize(envConfig);
 
-fs
+
+ fs
   .readdirSync(__dirname)
   .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
   .forEach((file) => {
     // eslint-disable-next-line import/no-dynamic-require
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    console.log(`index--------->file: ${file}`)    
+    console.log(`index--------->model.name: ${model.name}`)
+    // Cada modelo que hay en el directorio lo vinculamos a nuestro objeto DB
     db[model.name] = model;
   });
 
+
+// Realizar las asociaciones de los modelos
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
+    console.log(`index--------->modelName: ${modelName}`)
     db[modelName].associate(db);
   }
 });
@@ -34,17 +36,4 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;*/
-const User = require("./user");
-const Role = require("./role");
-const Survey = require("./survey");
-const Question = require("./question");
-const Answer = require("./answer");
-
-module.exports = { 
-  User, 
-  Role, 
-  Survey, 
-  Question,
-  Answer,
-};
+module.exports = db;

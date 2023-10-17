@@ -12,8 +12,8 @@ const createSurvey = async (survey) => {
 };
 const getAll = async () => {
     try {
-        const surveysFound = await Survey.findAll();
-        /* const surveysFound = await Survey.findAll({include: { all:true}});   */      
+        /* const surveysFound = await Survey.findAll(); */ 
+        const surveysFound = await Survey.findAll({include: { all:true}});       
         return surveysFound;
     } catch (err) {
         console.log(`Error when fetching Surveys.\n ${err}`);
