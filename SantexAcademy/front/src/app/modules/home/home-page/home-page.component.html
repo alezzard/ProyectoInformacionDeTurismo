@@ -48,6 +48,16 @@
     
       <div class="col-sm-6">
           <div class="container_opciones">
+
+            <!--  ENCUESTAS    -->
+            <div class="infocardContainer_button" >
+              <div id="main_button">
+                <img src="../../../../assets/img/encuesta_1.png" routerLink="/encuesta" alt="Encuesta">
+              </div>
+              <div id="textbois">
+                <a class="a_button" href="encuesta" style="color: black;">Encuestas</a>    
+                </div>  
+            </div> 
             
          <div *ngIf="isAdmin"> 
               <!--    ADMIN SERVER   -->
@@ -60,23 +70,13 @@
               </div>  
             </div> 
 
-             <!--  ENCUESTAS    -->
-             <div class="infocardContainer_button" >
-              <div id="main_button">
-                <img src="../../../../assets/img/encuesta_1.png" routerLink="/encuesta" alt="Encuesta">
-              </div>
-              <div id="textbois">
-                <a class="a_button" href="encuesta" style="color: black;">Encuestas</a>    
-                </div>  
-            </div> 
-
             <!--  DASHBOARD   -->
-            <div class="infocardContainer_button">
+            <div class="infocardContainer_button" routerLink="/dashboard">
               <div id="main_button">
                 <img src="../../../../assets/img/dash_1.png" alt="Dashboard">
               </div>
               <div id="textbois">
-                <a class="a_button" href="dashboard" target="_blank" style="color: black;">Dashboard</a>    
+                <a class="a_button" href="dashboard" style="color: black;">Dashboard</a>    
               </div>            
             </div> 
           </div>                     
