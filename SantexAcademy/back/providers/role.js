@@ -1,6 +1,4 @@
-/* const { Op } = require("sequelize"); */
-const { Role } = require("../models");
-
+const { Role } = require("../models/index");
 const createRole = async (role) => {
     try {
         const newRole = await Role.create(role);
@@ -13,6 +11,7 @@ const createRole = async (role) => {
 
 const getAll = async () => {
     try {
+        console.log(`Role: ${Role}`)
         const rolesFound = await Role.findAll();
         /* const usersFound = await User.findAll({include: { all:true}});   */      
         return rolesFound;

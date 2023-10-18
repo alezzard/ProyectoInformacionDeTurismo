@@ -1,9 +1,9 @@
 const { answerService } = require("../services");
 
 const createAnswer = async (req, res) => {
-  const answer = req.body;
+  const body = req.body;
   try {
-    const newAnswer = await answerService.createAnswer(answer);
+    const newAnswer = await answerService.createAnswer(body);
     res.status(201).json(newAnswer);
   } catch (err) {
     res.status(500).json({ action: "createAnswer", error: err.message });

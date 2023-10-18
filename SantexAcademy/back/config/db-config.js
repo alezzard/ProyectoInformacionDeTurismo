@@ -1,18 +1,44 @@
-const {Sequelize} = require('sequelize');
-
-const sequelize = new Sequelize({
-    dialect: "sqlite",
-    storage: ".database.sqlite"
-});
-
-const initializeDB = async () => {
-    try {
-        await sequelize.authenticate();
-        /* console.log("Conexión a la base de datos establecida."); */
-        await sequelize.sync({ force : false})// If is true,do DROP TABLE
-    } catch (error) {
-        /* console.error(`Hubo un error al inicializar la base de datos.\n ${error}`); */
+  module.exports = {
+    development: {
+      dialect: "sqlite",
+      storage: "./database/.dev-database.sqlite",    
+      // Configuración para seeders
+      seederStorage: "json",
+      seederStoragePath: "seeds.json", 
+      // Configuración para migrations
+      migrationStorage: "json",
+      migrationStorageTableName: "migrations.json",
+      define: {  
+        // Genera claves foraneas de este tipo user_id en vez de userId
+        underscored: true
+      }
+    },
+    test: {
+      dialect: "sqlite",
+      storage: ":memory:",    
+      // Configuración para seeders
+      seederStorage: "json",
+      seederStoragePath: "seeds.json", 
+      // Configuración para migrations
+      migrationStorage: "json",
+      migrationStorageTableName: "migrations.json",
+      define: {  
+        // Genera claves foraneas de este tipo user_id en vez de userId
+        underscored: true
+      }
+    },
+    production: {
+      dialect: "sqlite",
+      storage: "./database/.prod-database.sqlite",    
+      // Configuración para seeders
+      seederStorage: "json",
+      seederStoragePath: "seeds.json", 
+      // Configuración para migrations
+      migrationStorage: "json",
+      migrationStorageTableName: "migrations.json",
+      define: {  
+        // Genera claves foraneas de este tipo user_id en vez de userId
+        underscored: true
+      }
     }
-};
-
-module.exports = { sequelize, initializeDB};
+  };
