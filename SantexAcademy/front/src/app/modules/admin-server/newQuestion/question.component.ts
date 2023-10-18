@@ -10,6 +10,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Survey } from 'src/app/models/survey';
 import { SQuestionService } from 'src/app/core/services/s-question.service';
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-question',
@@ -24,7 +25,8 @@ import { Router } from '@angular/router';
     MatSelectModule,
     ReactiveFormsModule, 
     NgFor,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatButtonModule
   ],
 })
 export class QuestionComponent implements OnInit {

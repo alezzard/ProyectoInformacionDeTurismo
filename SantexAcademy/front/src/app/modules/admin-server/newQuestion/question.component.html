@@ -2,7 +2,7 @@
 <form (ngSubmit)="createQuestion()" class="formulario" [formGroup]="newQuestion" novalidate>
 
  <mat-form-field>
-    <mat-label>Redacte la pregunta</mat-label>
+    <mat-label class="label">Redacte la pregunta</mat-label>
     <input 
          type="question" 
          name="question" 
@@ -14,7 +14,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Tipos de Preguntas</mat-label>
+    <mat-label class="label">Tipos de Preguntas</mat-label>
     <mat-select formControlName="description" (ngModelChange)="defineQuestion()" multiple novalidate>
       <mat-option 
          *ngFor="let qt of descriptionList" 
@@ -33,9 +33,10 @@
     <section class="example-section">
       
         <input type="text" formControlName="optionAnswer">
-        <button type="button" (click)="agregarInput()">Agregar Respuesta</button>
-        <button type="button" (click)="guardarValores()">Guardar Respuestas</button>
+        <!-- <button type="button" mat-stroked-button color="warn" (click)="guardarValores()">Guardar Respuestas</button> -->
+        <button type="button" mat-stroked-button color="warn" (click)="agregarInput()">Agregar Respuesta</button>
     </section>
+    <h2>Opciones de respuestas guardadas: </h2>
     <div *ngFor="let inputValue of listAnswer">
       <h3>{{inputValue}}</h3>
     </div>
@@ -43,18 +44,19 @@
    </div>
 
   <mat-form-field *ngIf="description == 'Redactar' || description == 'MultipleChoice,Redactar'">
-    <mat-label>Redacte su respuesta</mat-label>
-    <input 
+     <mat-label class="label">Opcion "Redactar"</mat-label> 
+     <input 
          type="answer" 
          name="answer"
          placeholder="answer" 
+         id="container-label"
          class="form-control form-control-lg" 
          formControlName="answer"
          required
-         matInput>
+         matInput> 
   </mat-form-field>
 
-  <button type="submit">Create Question</button>
+  <button mat-raised-button type="submit">Create Question</button>
 
   
 </form>

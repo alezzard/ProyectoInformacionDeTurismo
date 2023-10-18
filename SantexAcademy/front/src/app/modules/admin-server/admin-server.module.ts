@@ -5,13 +5,14 @@ import { AdminServerRoutingModule } from './admin-server-routing.module';
 
 
 
+
 @NgModule({
   declarations: [
   ],
   imports: [
     CommonModule,
     AdminServerRoutingModule,
-    AdminServerPageComponent
+    AdminServerPageComponent,
   ],
   exports: [
     AdminServerPageComponent
