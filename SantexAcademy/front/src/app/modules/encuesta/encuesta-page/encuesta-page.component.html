@@ -48,47 +48,20 @@
         <form (ngSubmit)="createSurvey()" class="formulario" [formGroup]="newSurvey" novalidate>
         <div>
             <div class="container-datos-personales">
-                
-                <mat-form-field class="container-question">
-                    <mat-label>Edad</mat-label>
-                    <input 
-                    matInput>
-                </mat-form-field>
-                <mat-form-field class="container-question">
-                    <mat-label>Sexo</mat-label>
-                    <mat-select>
-                        <mat-option value="masulino">Masculino</mat-option>
-                        <mat-option value="femenino">Femenino</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-
-
-            <div *ngFor="let r of questionsList" class="form-control">
-                <div class="container-question">
-                    <h3>{{r.question}}</h3>
-                    <h1>{{r.description}}</h1>
-                    
-                    <div *ngIf="r.description == 'MultipleChoice' || r.description == 'MultipleChoice,Redactar'">
-                    <section *ngFor="let option of r.optionAnswer.split(',')">
-                        <mat-checkbox 
-                        name="answerSelect"
-                        ngDefaultControl
-                        [value]="option"
-                        (change)="selectAnswer(option, $event)" 
-                        class="form-control form-control-lg"
-                        formControlName="answerSelect"    
-                        >
-                            {{option}}
-                        </mat-checkbox>
-                    </section>
-                    </div>
-
-                    <button type="button" (click)="verIdQuestion()"> Ver id Preguntas</button>
-
-                    <div *ngIf="r.description == 'Redactar' || r.description == 'MultipleChoice,Redactar'">
-                        <input type="text">
-                    </div>
+                <div>
+                    <mat-form-field class="container-question">
+                        <mat-label>Edad</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="container-question">
+                        <mat-label>Sexo</mat-label>
+                        <mat-select>
+                            <mat-option value="masulino">Masculino</mat-option>
+                            <mat-option value="femenino">Femenino</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
             </div>
         </div>
@@ -129,34 +102,34 @@
                 <h3>{{r.question}}</h3>
                 <!-- <h1>{{r.description}}</h1> -->
                     
-                <div *ngIf="r.description == 'MultipleChoice' || r.description == 'MultipleChoice,Redactar'">
-                <section *ngFor="let option of r.optionAnswer.split(',')">
-                    <mat-checkbox 
-                    name="answerSelect"
-                    ngDefaultControl
-                    [value]="option"
-                    (change)="selectAnswer(option, $event)" 
-                    class="form-control form-control-lg"
-                    formControlName="answerSelect"    
-                    >
-                    {{option}}
-                    </mat-checkbox>
-                </section>
-                </div>
+                    <div *ngIf="r.description == 'MultipleChoice' || r.description == 'MultipleChoice,Redactar'">
+                    <section *ngFor="let option of r.optionAnswer.split(',')">
+                        <mat-checkbox 
+                        name="answerSelect"
+                        ngDefaultControl
+                        [value]="option"
+                        (change)="selectAnswer(option, $event)" 
+                        class="form-control form-control-lg"
+                        formControlName="answerSelect"    
+                        >
+                            {{option}}
+                        </mat-checkbox>
+                    </section>
+                    </div>
 
-                <div *ngIf="r.description == 'Redactar' || r.description == 'MultipleChoice,Redactar'">
-                    <input type="text">
+                    <button type="button" (click)="verIdQuestion()"> Ver id Preguntas</button>
+
+                    <div *ngIf="r.description == 'Redactar' || r.description == 'MultipleChoice,Redactar'">
+                        <input type="text">
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- BOTONES -->
-        <div  class="container_btn">
-            <button class="bnt_cancelar" type="submit"> Cancelar </button>            
-            <button class="bnt_guardar" type="submit"> Guardar </button>
-        </div>
-            
+
+            <button type="submit"> Guardar </button>
         </form>
         </div>
-    </div>
+</div> 
+
+
 </div> 
 
