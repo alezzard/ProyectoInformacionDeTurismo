@@ -42,10 +42,11 @@
                 de la Municipalidad de Mina Clavero, que tiene por finalidad conocer cuáles sus preferencias, medios por
                 los ha conocido nuestro destino y nivel de satisfacción; Esta información será de suma importancia para
                 desarrollar planes estratégicos que permitirán hacer de nuestra localidad el mejor lugar para sus
-                vacaciones.
+                vacaciones.<br>
                 Cabe aclarar que los datos son confidenciales y anónimos.
             </p>
         <form (ngSubmit)="createSurvey()" class="formulario" [formGroup]="newSurvey" novalidate>
+        <div>
             <div class="container-datos-personales">
                 
                 <mat-form-field class="container-question">
@@ -90,9 +91,72 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <!--    PROCEDENCIA   -->
+        <div style="margin-left: 12px;">                
+            <div>
+                <mat-form-field class="container-question">   
+                    <mat-label>Procedencia</mat-label>                
+                    <mat-select>
+                        <mat-option value="córdobaCapital">Córdoba capital</mat-option>
+                        <mat-option value="localidad">Otra localidad</mat-option>
+                        <mat-option value="provincia">Otra provincia</mat-option>
+                        <mat-option value="país">Otro país</mat-option>                        
+                    </mat-select>
+                </mat-form-field>                
+                <label for="uname">Cual?:   </label>
+                <input type="text" id="uname" name="name" placeholder="Ingrese nombre"/>
+            </div>   
+        <!--    OP. COMPAÑIA    -->
+            <div>                            
+                <mat-form-field class="container-question">
+                    <mat-label>¿Ud. vino a Mina Clavero?</mat-label>
+                    <mat-select>
+                        <mat-option value="solo">Solo</mat-option>
+                        <mat-option value="pareja">Con su pareja</mat-option>
+                        <mat-option value="amigos">Con amigos</mat-option>
+                        <mat-option value="excursión">En una excursión</mat-option>     
+                        <mat-option value="otros">Otros</mat-option>                     
+                    </mat-select>
+                </mat-form-field>                        
+                <label for="uname">Cual?:   </label>
+                <input type="text" id="uname" name="name" placeholder="Ingrese texto"/> 
+            </div> 
+        </div>  
+    
+        <div *ngFor="let r of questionsList" class="form-control">
+            <div class="container-question">
+                <h3>{{r.question}}</h3>
+                <!-- <h1>{{r.description}}</h1> -->
+                    
+                <div *ngIf="r.description == 'MultipleChoice' || r.description == 'MultipleChoice,Redactar'">
+                <section *ngFor="let option of r.optionAnswer.split(',')">
+                    <mat-checkbox 
+                    name="answerSelect"
+                    ngDefaultControl
+                    [value]="option"
+                    (change)="selectAnswer(option, $event)" 
+                    class="form-control form-control-lg"
+                    formControlName="answerSelect"    
+                    >
+                    {{option}}
+                    </mat-checkbox>
+                </section>
+                </div>
 
-            <button type="submit"> Guardar </button>
+                <div *ngIf="r.description == 'Redactar' || r.description == 'MultipleChoice,Redactar'">
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <!-- BOTONES -->
+        <div  class="container_btn">
+            <button class="bnt_cancelar" type="submit"> Cancelar </button>            
+            <button class="bnt_guardar" type="submit"> Guardar </button>
+        </div>
+            
         </form>
         </div>
     </div>
-</div>
+</div> 
+
