@@ -62,7 +62,7 @@
   transform: scale(1);
   -ms-transform: scale(1);
   -webkit-transform: scale(1);
-  background: linear-gradient(121deg, rgba(255, 255, 255, 0.562) 13%, rgb(4, 90, 143) 100%);
+  background: linear-gradient(121deg, rgba(255, 255, 255, 0.562) 13%, rgb(174, 206, 226) 100%);
   transition: all 265ms ease-out}
 
 .social-icons a:hover:before {
@@ -126,7 +126,7 @@ p{
   height: 200px; 
   margin-top: 50px;
   border-radius: 100px;   
-  background: linear-gradient(121deg, rgba(255,255,255,0) 13%, rgba(0,159,255,1) 100%);  
+  background: linear-gradient(100deg, rgba(255,255,255,0) 13%, rgb(174, 206, 226) 100%);  
   transition: all 500ms ease-in;
   transition-delay: 1s;
 } 
@@ -227,7 +227,7 @@ p{
   display: flex;  
   margin-top: 10px;   
   border-radius: 100px;  
-  background: linear-gradient(121deg, rgba(255,255,255,0) 13%, rgba(0,159,255,1) 100%);
+  background: linear-gradient(121deg, rgba(255,255,255,0) 13%, rgb(174, 206, 226) 100%);
   transition: all 500ms ease-in;
   transition-delay: 1s;
 }
