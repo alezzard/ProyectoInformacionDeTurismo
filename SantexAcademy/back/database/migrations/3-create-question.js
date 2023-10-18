@@ -12,7 +12,7 @@ module.exports = {
       value: {
         type: Sequelize.STRING
       },
-      answerOptions: {
+      answer_options: {
         type: Sequelize.STRING
       },
       description: {

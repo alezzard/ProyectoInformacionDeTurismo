@@ -26,26 +26,27 @@ const getAll = async () => {
 const getQuestion = async (questionId) => {
   try {
     // Buscar respuestas agrupadas por valor para la pregunta específica
-    const agregatedAnsewrs = await Answer.findAll({
-      attributes: [
-        'answer',
-        [Sequelize.fn('count', Sequelize.col('answer')), 'countAnswer']
-      ],
-      where: { questionId: questionId}, //filtro por el ID de la pregunta
-      group: ['answer'], //agrupa por el valor de la respuesta
-      order: [ Sequelize.literal('countanswer DESC')]
+    const aggregatedAnswers = await Answer.findAll({
+        attributes: [
+            'value',
+            [Sequelize.fn('count', Sequelize.col('value')), 'countValue']
+        ],
+        where: { question_id: questionId }, // Cambio de 'QuestionId' a 'question_id'
+        group: ['value'], // agrupa por el valor de la respuesta
+        order: [Sequelize.literal('countValue DESC')]
     });
 
+    // Transformar la respuesta para que se ajuste al formato deseado
     const formattedResponse = {};
 
     formattedResponse[`pregunta_id_${questionId}`] = {
-      total_respuestas: agregatedAnsewrs.reduce((acc, answer) => acc + answer.get('countanswer'), 0),
-      respuestas: agregatedAnsewrs.map( answer => {
-        return {
-            answer: answer.answer,
-            respuestas: answer.get('countanswer')
-        };
-      })
+        total_respuestas: aggregatedAnswers.reduce((acc, answer) => acc + answer.get('countValue'), 0),
+        respuestas: aggregatedAnswers.map(answer => {
+            return {
+                value: answer.value,
+                respuestas: answer.get('countValue')
+            };
+        })
     };
 
     return formattedResponse;
