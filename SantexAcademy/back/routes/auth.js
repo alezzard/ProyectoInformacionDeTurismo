@@ -15,18 +15,16 @@ router.post("/", async (req, res) => {
         const userFound = await userService.validateUser(email, password);
         if (userFound) {
 
-            const roleId = userFound[0].get('RoleId');
-            console.log(`Routes: email: ${email}, password: ${password} \n RoleId: ${roleId}`);
+            const role_id = userFound[0].get('role_id');
+            console.log(`Routes: email: ${email}, password: ${password} \n role_id: ${role_id}`);
 
-            if (roleId == 1) {
+            if (role_id == 1) {
                 const token = jwt.sign({ email, role: "Admin" }, SERVER_SECRET, {
                     expiresIn: "40m",
                 });
                 res.json({ token, "authorities": "Admin" });
             
-            /* } else if (roleId == 2) { */
-            } else if (roleId !== 1) { //probar que no sea una vulnerabilidad..
-
+            } else if (role_id == 2) { 
                 const token = jwt.sign({ email, role: "User" }, SERVER_SECRET, {
                     expiresIn: "40m",
                 });
