@@ -67,7 +67,7 @@ export class EncuestaPageComponent {
   }
 
   createSurvey():void {
-    const saveAnswer = new Answer (1 ,this.idSurvey, this.idQuestion , this.answerSelect, " description");
+    const saveAnswer = new Answer (1 , this.idSurvey, this.idQuestion , this.answerSelect, " description");
     let pruebaAnswer : Answer;
     this.sAnswer.createAnswer(saveAnswer).subscribe( data => {
       pruebaAnswer = data;

@@ -44,7 +44,7 @@ public getAuthorities(): string {
      this.roles.push(authority.authority); */
 }
 
-public setID(user_id: number): void {
+public setID(user_id: string): void {
   window.sessionStorage.removeItem(ID_KEY);
   window.sessionStorage.setItem(ID_KEY, user_id);
 /*  window.sessionStorage.removeItem(AUTHORITIES_KEY);
