@@ -13,6 +13,10 @@ import { TokenService } from 'src/app/core/services/token.service';
 import { Router } from '@angular/router';
 import { Question } from 'src/app/models/questions';
 import { SQuestionService } from 'src/app/core/services/s-question.service';
+import { SurveyService } from 'src/app/core/services/survey.service';
+import { Survey } from 'src/app/models/survey';
+import { AnswerService } from 'src/app/core/services/answer.service';
+import { Answer } from 'src/app/models/answer';
 
 @Component({
   selector: 'app-encuesta-page',
@@ -36,16 +40,26 @@ import { SQuestionService } from 'src/app/core/services/s-question.service';
 })
 export class EncuestaPageComponent {
   
-  newSurvey!: FormGroup;
+  newForm!: FormGroup;
   showE: boolean = false;
-  answerSelect!: String;
-  prueba!: String;
+  answerSelect!: string;
   idQuestion!: number;
+  newSurvey: Survey = new Survey("survey", "newsurvey");
+  idUser!: number;
+  idSurvey!: number;
+
 
   questionsList!: Question[];
   optionsAnswerList: string[][] = [];
 
-  constructor(private tokenService: TokenService, private router: Router, private sQuestion: SQuestionService, private readonly fb: FormBuilder){};
+  constructor( 
+      private tokenService: TokenService, 
+      private router: Router, 
+      private sQuestion: SQuestionService,
+      private sSurvey: SurveyService, 
+      private sAnswer: AnswerService,
+      private readonly fb: FormBuilder
+      ){};
   
   logout():void {
     this.tokenService.logOut();
@@ -53,7 +67,13 @@ export class EncuestaPageComponent {
   }
 
   createSurvey():void {
-    
+    const saveAnswer = new Answer (1 ,this.idSurvey, this.idQuestion , this.answerSelect, " description");
+    let pruebaAnswer : Answer;
+    this.sAnswer.createAnswer(saveAnswer).subscribe( data => {
+      pruebaAnswer = data;
+      console.log(pruebaAnswer)
+    });
+    this.showE = false;
   };
 
   backHome():void {
@@ -61,20 +81,29 @@ export class EncuestaPageComponent {
   }
 
   newEncuesta():void {
+    let pruebaSurvey : Survey;
+     
+    this.sSurvey.createSurvey(this.newSurvey).subscribe(data =>{
+      pruebaSurvey = data;
+      this.idSurvey = data.id;
+      console.log(pruebaSurvey, "su id: " + this.idSurvey);
+    })
     this.showE = true;
+    
   };
 
   saveEncuesta():void {
-    this.showE = false;
+    
   };
 
-  selectAnswer(option: String, event: MatCheckboxChange):void {
+  selectAnswer(optionSelect: string, event: MatCheckboxChange, question : Question ):void {
     const isChecked = event.checked;
     const answer = isChecked ? 'valorElegido' : '';
-    this.newSurvey.get('answerSelect_' + option)?.setValue(answer);
-    this.prueba = option;
-    console.log(this.prueba);
-    console.log('valor seleccionado para:' + option + ':', answer);
+    this.newForm.get('answerSelect_' + optionSelect)?.setValue(answer);
+    this.answerSelect = optionSelect;
+    this.idQuestion = question.id!;
+    console.log(this.answerSelect, this.idQuestion);
+    console.log('valor seleccionado para:' + this.answerSelect + ':', answer);
   };
 
   verIdQuestion():void {
@@ -85,11 +114,12 @@ export class EncuestaPageComponent {
 
 
   ngOnInit(): void {
-    this.newSurvey = this.initForm();
-    /* this.newSurvey.setValidators */
+    this.newForm = this.initForm();
+    /* this.newForm.setValidators */
 
     this.sQuestion.lista().subscribe(data => {
       this.questionsList = data;
+      console.log(this.questionsList);
       alert("Se cargaron las preguntas")
     }, err => {
       alert("No se pudo cargar preguntas")
@@ -97,7 +127,7 @@ export class EncuestaPageComponent {
   };
 
   initForm(): FormGroup {
-    const soption = 'answerSelect_' + this.prueba;
+    const soption = 'answerSelect_' + this.answerSelect;
     return this.fb.group({
       answerSelect: ['', [Validators.required]],
       soption: ['', []],

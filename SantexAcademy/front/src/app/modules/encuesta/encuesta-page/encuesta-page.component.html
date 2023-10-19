@@ -45,7 +45,7 @@
                 vacaciones.<br>
                 Cabe aclarar que los datos son confidenciales y anónimos.
             </p>
-        <form (ngSubmit)="createSurvey()" class="formulario" [formGroup]="newSurvey" novalidate>
+        <form (ngSubmit)="createSurvey()" class="formulario" [formGroup]="newForm" novalidate>
         <div>
             <div class="container-datos-personales">
                 <div>
@@ -97,18 +97,18 @@
             </div> 
         </div>  
     
-        <div *ngFor="let r of questionsList" class="form-control">
+        <div *ngFor="let question of questionsList" class="form-control">
             <div class="container-question">
-                <h3>{{r.question}}</h3>
-                <!-- <h1>{{r.description}}</h1> -->
+                <h3>{{question.value}}</h3>
+                <!-- <h1>{{question.description}}</h1> -->
                     
-                    <div *ngIf="r.description == 'MultipleChoice' || r.description == 'MultipleChoice,Redactar'">
-                    <section *ngFor="let option of r.optionAnswer.split(',')">
+                    <div *ngIf="question.description == 'MultipleChoice' || question.description == 'MultipleChoice,Redactar'">
+                    <section *ngFor="let option of question.answerOptions.split(',')"> 
                         <mat-checkbox 
                         name="answerSelect"
                         ngDefaultControl
                         [value]="option"
-                        (change)="selectAnswer(option, $event)" 
+                        (change)="selectAnswer(option, $event, question)" 
                         class="form-control form-control-lg"
                         formControlName="answerSelect"    
                         >
@@ -119,7 +119,7 @@
 
                     <button type="button" (click)="verIdQuestion()"> Ver id Preguntas</button>
 
-                    <div *ngIf="r.description == 'Redactar' || r.description == 'MultipleChoice,Redactar'">
+                    <div *ngIf="question.description == 'Redactar' || question.description == 'MultipleChoice,Redactar'">
                         <input type="text">
                     </div>
                 </div>

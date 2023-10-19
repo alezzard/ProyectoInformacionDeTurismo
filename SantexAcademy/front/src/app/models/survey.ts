@@ -2,9 +2,12 @@ import { Question } from "./questions";
 
 export class Survey {
     id?: number;
-    question!: Question[]; 
+    name!: string;
+    description?: string;
+   /*  question!: Question[];  */
 
-    constructor( questions: Question[]) {
-       this.question = questions;
+    constructor(name: string, description: string) {
+        this.name = name;
+        this.description = description;
     }
 }
