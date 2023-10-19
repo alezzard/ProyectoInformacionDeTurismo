@@ -18,8 +18,6 @@ const sequelize = new Sequelize(envConfig);
   .forEach((file) => {
     // eslint-disable-next-line import/no-dynamic-require
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    console.log(`index--------->file: ${file}`)    
-    console.log(`index--------->model.name: ${model.name}`)
     // Cada modelo que hay en el directorio lo vinculamos a nuestro objeto DB
     db[model.name] = model;
   });
@@ -28,7 +26,6 @@ const sequelize = new Sequelize(envConfig);
 // Realizar las asociaciones de los modelos
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
-    console.log(`index--------->modelName: ${modelName}`)
     db[modelName].associate(db);
   }
 });
