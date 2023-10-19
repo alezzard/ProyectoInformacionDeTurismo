@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 const TOKEN_KEY = 'AuthToken';
 const EMAIL_KEY = 'AuthEmail';
 const AUTHORITIES_KEY = 'AuthAuthorities';
+const ID_KEY = 'AuthId';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,17 @@ public getAuthorities(): string {
    /* JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)!).forEach((authority:any) => {
      this.roles.push(authority.authority); */
 }
+
+public setID(user_id: number): void {
+  window.sessionStorage.removeItem(ID_KEY);
+  window.sessionStorage.setItem(ID_KEY, user_id);
+/*  window.sessionStorage.removeItem(AUTHORITIES_KEY);
+ window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities)) */;
+}
+
+public getIdUser(): string {
+  return sessionStorage.getItem(ID_KEY)!;
+ }
 
 public logOut(): void {
  window.sessionStorage.clear();
