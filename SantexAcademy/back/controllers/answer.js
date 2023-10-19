@@ -25,7 +25,7 @@ const getAll = async (req, res) => {
 
 const getAnswer = async (req, res) => {
   try {
-    const answerId = req.params;
+    const answerId = req.params.answerId;
     const answerFound = await answerService.getAnswer(answerId);
     if (!answerFound) {
       res.status(404).json({ action: "getAnswer", error: "Answer Not Found" });

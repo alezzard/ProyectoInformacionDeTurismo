@@ -41,9 +41,10 @@ const getAll = async () => {
 
 const getAnswer = async (answer_id) => {
   try {
+    /* const answerFound = await Answer.findByPk(answer_id); */
     const answerFound = await Answer.findByPk(answer_id, {
       include: { all: true },
-    });
+    }); 
     return answerFound;
   } catch (err) {
     console.log(`Error when fetching Answer ${answer_id}.\n ${err}`);
