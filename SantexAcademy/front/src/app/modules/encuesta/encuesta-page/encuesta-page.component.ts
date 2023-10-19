@@ -43,6 +43,7 @@ export class EncuestaPageComponent {
   newForm!: FormGroup;
   showE: boolean = false;
   answerSelect!: string;
+  answerSelectList!: string[];
   idQuestion!: number;
   newSurvey: Survey = new Survey("survey", "newsurvey");
   idUser!: number;
@@ -73,7 +74,8 @@ export class EncuestaPageComponent {
       pruebaAnswer = data;
       console.log(pruebaAnswer)
     });
-    this.showE = false;
+    alert("Se cargo la encuesta correctamente")
+    
   };
 
   backHome():void {
@@ -102,6 +104,7 @@ export class EncuestaPageComponent {
     this.newForm.get('answerSelect_' + optionSelect)?.setValue(answer);
     this.answerSelect = optionSelect;
     this.idQuestion = question.id!;
+    /*   this.answerSelectList.push(this.answerSelect) */
     console.log(this.answerSelect, this.idQuestion);
     console.log('valor seleccionado para:' + this.answerSelect + ':', answer);
   };
@@ -120,7 +123,7 @@ export class EncuestaPageComponent {
     this.sQuestion.lista().subscribe(data => {
       this.questionsList = data;
       console.log(this.questionsList);
-      alert("Se cargaron las preguntas")
+     /*  alert("Se cargaron las preguntas") */
     }, err => {
       alert("No se pudo cargar preguntas")
     });

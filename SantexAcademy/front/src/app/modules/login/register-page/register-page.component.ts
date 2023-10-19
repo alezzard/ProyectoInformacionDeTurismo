@@ -14,7 +14,7 @@ export class RegisterPageComponent {
   lastname!: string;
   email!: string;
   password!: string;
-  roleId!: 2;
+  role_id!: 2;
   users!: Users;
   errMsj!: string;
 
@@ -27,7 +27,7 @@ export class RegisterPageComponent {
       user.lastName = this.users.lastName;
       user.email = this.users.email;
       user.password = this.users.password;
-      user.roleId = this.roleId;
+      user.role_id = this.role_id;
       this.router.navigate(['login'])
     }, err => {
       this.errMsj = err.error.mensaje;
