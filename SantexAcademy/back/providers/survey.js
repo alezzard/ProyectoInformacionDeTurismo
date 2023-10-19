@@ -1,10 +1,23 @@
-const { Op, where } = require("sequelize");
 const { Survey } = require("../models");
+const userProvider = require("../providers/user");
 
-const createSurvey = async (survey) => {
+const createSurvey = async (body) => {
     try {
-        const newSurvey = await Survey.create(survey);
-        return newSurvey;
+        const currentDate = new Date();
+        //extraigo lo necesario del body
+        const {user_id, name, description} = body;  
+        //crea la encuesta
+        const newSurvey = await Survey.create({name, description});
+        
+        //relaciono la encuesta con el usuario
+        if(newSurvey) {
+            const userFound = await userProvider.getUser(user_id);
+            if(userFound) {
+                await userFound.addSurvey(newSurvey);
+            }
+        }
+
+        return newSurvey
     } catch (err) {
         console.log(`Error when creating Survey.\n ${err}`);
         throw err;
@@ -12,8 +25,8 @@ const createSurvey = async (survey) => {
 };
 const getAll = async () => {
     try {
-        /* const surveysFound = await Survey.findAll(); */ 
-        const surveysFound = await Survey.findAll({include: { all:true}});       
+        /* const surveysFound = await Survey.findAll(); */
+        const surveysFound = await Survey.findAll({include: { all:true}});
         return surveysFound;
     } catch (err) {
         console.log(`Error when fetching Surveys.\n ${err}`);
@@ -33,7 +46,7 @@ const getSurvey = async (surveyId) => {
 
 const putSurvey = async (surveyId, survey) => {
     try {
-        console.log(`Getting survey ${survey} with id:${surveyId}.`)
+        
         await getSurvey(surveyId);
         const updatedSurvey = await Survey.update(
             { ...survey }, 
