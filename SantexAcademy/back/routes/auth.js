@@ -16,19 +16,21 @@ router.post("/", async (req, res) => {
         if (userFound) {
 
             const role_id = userFound[0].get('role_id');
-            console.log(`Routes: email: ${email}, password: ${password} \n role_id: ${role_id}`);
+            const user_id = userFound[0].get('id');
+            console.log(`Routes: email: ${email}, password: ${password} \n role_id: ${role_id}\n user_id: ${user_id}`);
+            console.log(`------------------userFound: ${userFound[0]}`)
 
             if (role_id == 1) {
                 const token = jwt.sign({ email, role: "Admin" }, SERVER_SECRET, {
                     expiresIn: "40m",
                 });
-                res.json({ token, "authorities": "Admin" });
+                res.json({ token, "authorities": "Admin", "user_id":user_id });
             
             } else if (role_id == 2) { 
                 const token = jwt.sign({ email, role: "User" }, SERVER_SECRET, {
                     expiresIn: "40m",
                 });
-                return res.json({ token, "authorities": "User" });
+                return res.json({ token, "authorities": "User", "user_id":user_id });
             }
 
         } else {
