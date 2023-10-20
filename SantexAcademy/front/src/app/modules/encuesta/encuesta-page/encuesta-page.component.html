@@ -102,7 +102,7 @@
                 <h3>{{question.value}}</h3>
                 <!-- <h1>{{question.description}}</h1> -->
                     
-                    <div *ngIf="question.description == 'MultipleChoice' || question.description == 'MultipleChoice,Redactar'">
+                    <div *ngIf="question.description == 'check_box' || question.description == 'radio_button'">
                     <section *ngFor="let option of question.answerOptions.split(',')"> 
                         <mat-checkbox 
                         name="answerSelect"
@@ -117,15 +117,17 @@
                     </section>
                     </div>
 
-                    <button type="button" (click)="verIdQuestion()"> Ver id Preguntas</button>
+                   
 
-                    <div *ngIf="question.description == 'Redactar' || question.description == 'MultipleChoice,Redactar'">
+                    <div *ngIf="question.description == 'redactar'">
                         <input type="text">
                     </div>
+
+                    <button mat-raised-button type="submit"> Guardar </button>
                 </div>
             </div>
 
-            <button type="submit"> Guardar </button>
+            
         </form>
         </div>
 </div> 

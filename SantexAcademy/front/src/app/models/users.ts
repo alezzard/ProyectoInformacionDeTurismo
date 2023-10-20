@@ -5,7 +5,7 @@ export class Users {
     password!: string;
     email!: string;
     lastName!: string;
-    roleId!: number;
+    role_id!: number;
 
     constructor(firstName: string, lastname: string, email: string, password: string) {
         this.firstName = firstName;

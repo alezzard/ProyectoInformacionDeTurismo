@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
                 });
                 res.json({ token, "authorities": "Admin", "user_id":user_id });
             
-            } else if (role_id == 2) { 
+            } else if (role_id !== 1) { 
                 const token = jwt.sign({ email, role: "User" }, SERVER_SECRET, {
                     expiresIn: "40m",
                 });
